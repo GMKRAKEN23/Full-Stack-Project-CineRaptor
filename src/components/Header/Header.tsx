@@ -1,33 +1,34 @@
 "use client";
 
-import {Roboto} from "next/font";
 import Link from "next/link";
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from "react";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import MagnifyingGlassIcon from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+  { name: "Series", href: "#" },
+  { name: "Films", href: "#" },
+];
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+    <header className="bg-white font-roboto">
+      <nav
+        aria-label="Global"
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+      >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center">
             <span className="sr-only">cineRaptor</span>
             <img
               alt=""
               src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
               className="h-8 w-auto"
             />
-            <p>CineRaptor</p>
+            <p className="pl-4">CineRaptor</p>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -40,20 +41,39 @@ export default function Header() {
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
+
+        <div>
+      <label htmlFor="email" className="sr-only">
+        Email
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      />
+        </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
               {item.name}
             </a>
           ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
-      <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
@@ -100,5 +120,5 @@ export default function Header() {
         </DialogPanel>
       </Dialog>
     </header>
-  )
+  );
 }
