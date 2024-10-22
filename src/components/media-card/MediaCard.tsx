@@ -5,21 +5,22 @@ interface MediaCardProps {
   mediaId?: string;
 }
 
-export default function MediaCard({ mediaId }: MediaCardProps) {
+export default function MediaCard({ media }: MediaCardProps) {
   return (
-    <div className=" shadow-md min-w-52">
-        <Link href={`/movies/${mediaId}`} className="">
-          <div className="w-full h-72 relative ">
+    <div className=" shadow-md min-w-48 rounded-md">
+        <Link href={`/movies/${media.id}`} className="">
+          <div className="w-full h-64 relative">
             <Image
-              src="https://image.tmdb.org/t/p/w500/hYQs5RPHiWctoYqvI8baHiIqdd8.jpg"
-              alt="media title"
+              src={`${process.env.TMDB_IMAGE_BASE_PATH}${media.poster_path}`}
+              alt={media.title}
               fill
-              className="rounded-t-md  "
+              className="rounded-t-md "
             />
           </div>
-          <div className="px-5 py-2.5 ">
-            <h2 className="font-semibold my-2 text-base">Creed II</h2>
-            <p className="text-xs">Le 01/03/2023</p>
+          <div className="px-5 py-2.5 relative">
+            <p className="w-8 h-8 absolute border-1 border-gray-900 rounded-full z-10 bg-white flex justify-center items-center">{media.vote_average.toFixed(1)}</p>
+            <h3 className="font-semibold my-2 text-base">{media.title}</h3>
+            <p className="text-xs">Le {new Date(media.release_date).toLocaleDateString('fr-FR')}</p>
           </div>
         </Link>
     </div>
