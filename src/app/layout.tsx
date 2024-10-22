@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${montserrat.variable} antialiased`}
+        className={`${roboto.variable} ${montserrat.variable} antialiased bg-neutral-200`} 
       >
       <Header/>
         <main>
