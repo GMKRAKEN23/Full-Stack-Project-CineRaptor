@@ -1,5 +1,5 @@
 import { getMovieByPath } from "@/utils/movieClient";
-import MediaCard from "../media-card/MediaCard";
+import MediaCard from "../Media-card/MediaCard";
 
 export default async function Popular(){
 
