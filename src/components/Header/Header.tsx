@@ -37,9 +37,9 @@ export default function Header() {
               />
             </div>
           </div>
-          <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
+          <div className="relative flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
             <div className="w-full sm:max-w-xs">
-              <label htmlFor="search" className="sr-only">
+              <label htmlFor="search movie" className="sr-only">
                 Search
               </label>
               <div className="relative">
