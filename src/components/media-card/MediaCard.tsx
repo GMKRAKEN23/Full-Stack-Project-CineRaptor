@@ -1,11 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-interface MediaCardProps {
-  mediaId?: string;
-}
-
-export default function MediaCard({ media }: MediaCardProps) {
+export default function MediaCard({ media }) {
   return (
     <div className=" shadow-md min-w-48 rounded-md z-0">
         <Link href={`/movies/${media.id}`} className="">
