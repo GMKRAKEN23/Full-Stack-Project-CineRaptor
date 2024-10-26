@@ -11,7 +11,7 @@ export default function MovieSearchResults({ movieResults }) {
                             width={90}
                             height={50}
                             alt={movie.title}
-                            src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}${movie.backdrop_path}`}
+                            src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${movie.backdrop_path}`}
                         />
                         <p className="pl-2">{movie.title}</p>
                     </Link>

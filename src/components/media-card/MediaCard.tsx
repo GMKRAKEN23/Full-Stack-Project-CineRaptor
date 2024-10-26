@@ -7,7 +7,7 @@ export default function MediaCard({ media }) {
         <Link href={`/movies/${media.id}`} className="">
           <div className="w-full h-64 relative">
             <Image
-              src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}${media.poster_path}`}
+              src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${media.poster_path}`}
               alt={media.title}
               fill
               className="rounded-t-md "
