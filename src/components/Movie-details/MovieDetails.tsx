@@ -1,5 +1,6 @@
 import Image from "next/image";
 import MovieCredits from "../Movie-credits/MovieCredits";
+import { Suspense } from "react";
 
 export default function MovieDetails({ movie }){
   return (
@@ -42,7 +43,9 @@ export default function MovieDetails({ movie }){
           <h2 className="text-white text-sm font-bold my-3">Synopsis</h2>
           <p className="text-sm leading-6 font-light line-clamp-5">{movie.overview}</p>
           <div className="mt-auto">
-            <MovieCredits movieId={movie.id}/>
+            <Suspense fallback={<p>Chargement...</p>}>
+                <MovieCredits movieId={movie.id}/> 
+            </Suspense>
           </div>
         </div>
       </div>
