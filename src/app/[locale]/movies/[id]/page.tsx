@@ -7,14 +7,13 @@ import { Suspense } from "react";
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
-export default async function MoviesPage( {params}){
+export default async function MoviesPage( {params : {id, locale}}){
 
-    const movie = await getMovieByPath(`/movie/${params.id}`)
+    const movie = await getMovieByPath(`/movie/${id}`, [], locale)
 
     if(!movie.original_title){
         return notFound();
     }
-
     return(
         <div>
             <MovieDetails movie={movie} />

@@ -1,8 +1,8 @@
 import { getMovieByPath } from "@/utils/movieClient";
 import Link from "next/link";
 
-export default async function Genres() {
-  const { genres } = await getMovieByPath("/genre/movie/list");
+export default async function Genres({locale}) {
+  const { genres } = await getMovieByPath("/genre/movie/list", [], locale);
 
   return (
     <div>

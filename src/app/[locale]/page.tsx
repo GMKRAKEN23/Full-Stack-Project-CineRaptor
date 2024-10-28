@@ -3,11 +3,11 @@ import Popular from "@/components/Popular/Popular";
 
 export const revalidate = 86400;
 
-export default function Home() {
+export default function Home({params: {locale} }) {
   return (
     <div className="m-6">
-    < Popular />
-    < Genres />
+    < Popular locale={locale}/>
+    < Genres locale={locale} />
     </div>
   );
 }

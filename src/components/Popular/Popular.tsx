@@ -1,9 +1,9 @@
 import { getMovieByPath } from "@/utils/movieClient";
 import MediaCard from "../Media-card/MediaCard";
 
-export default async function Popular(){
+export default async function Popular({locale}){
 
-    const { results } = await getMovieByPath("/movie/popular")
+    const { results } = await getMovieByPath("/movie/popular", [], locale)
     const popularMovies = results.slice( 0, 6);
     return(
         <div>

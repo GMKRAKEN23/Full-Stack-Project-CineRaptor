@@ -10,7 +10,6 @@ export default async function MovieCredits({ movieId }) {
           key={person.id}
           className="flex flex-col items-center mt-2"
         >
-  
             <Image
               src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w185${person.profile_path}`}
               alt={person.name}
