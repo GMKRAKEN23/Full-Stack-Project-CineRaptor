@@ -10,7 +10,6 @@ export default function LanguageSelector() {
     const currentLanguage = useCurrentLanguage();
 
     useEffect(() => {
-        // Fermer la liste déroulante lorsque la langue actuelle change
         setIsOpen(false);
     }, [currentLanguage]);
 

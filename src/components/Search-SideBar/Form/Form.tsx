@@ -13,7 +13,7 @@ export default function Form(){
         searchParams.append("sort_by", form.get('sort'));
         searchParams.append("release_date.gte", form.get('fromDate'));
         searchParams.append("release_date.lte", form.get('toDate'));
-
+        
         router.push(`${pathname}?${searchParams.toString()}`);
     }
 

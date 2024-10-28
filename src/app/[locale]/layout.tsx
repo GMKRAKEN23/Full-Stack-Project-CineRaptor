@@ -16,16 +16,16 @@ export function generateStaticParams(){
 }
 
 export default function RootLayout({
-  children,
+  children, params: { locale }
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${roboto.variable} ${montserrat.variable} antialiased bg-neutral-200`} 
       >
-      <Header/>
+      <Header locale={locale}/>
         <main>
           {children}
         </main>

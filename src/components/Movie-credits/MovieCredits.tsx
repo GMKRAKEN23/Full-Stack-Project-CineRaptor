@@ -1,8 +1,8 @@
 import { getMovieByPath } from "@/utils/movieClient";
 import Image from "next/image";
 
-export default async function MovieCredits({ movieId }) {
-  const { cast } = await getMovieByPath(`/movie/${movieId}/credits`);
+export default async function MovieCredits({ movieId, locale}) {
+  const { cast } = await getMovieByPath(`/movie/${movieId}/credits`, [], locale);
   return (
     <div className="flex gap-6">
       {cast.slice(0, 4).map((person) => (

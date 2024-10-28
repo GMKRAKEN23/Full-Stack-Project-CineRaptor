@@ -1,4 +1,4 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton,} from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaUser } from "react-icons/fa";
 import MovieSearch from '../MovieSearch/MovieSearch';
@@ -10,6 +10,7 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
+
 const navigation = [
   { name: 'Séries', href: '#', current: true },
   { name: 'Films', href: '/movies', current: false },
@@ -24,7 +25,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Header() {
+export default function Header({locale}) {
   return (
     <Disclosure as="header" className="bg-white shadow">
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
@@ -44,7 +45,7 @@ export default function Header() {
                 Search
               </label>
               <div className="relative">
-                <MovieSearch />
+                <MovieSearch locale={locale}/>
               </div>
             </div>
           </div>

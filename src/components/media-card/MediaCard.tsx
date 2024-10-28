@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function MediaCard({ media }) {
+export default function MediaCard({ media, locale }) {
   return (
-    <div className=" shadow-md min-w-48 rounded-md z-0">
-        <Link href={`/movies/${media.id}`} className="">
+    <div className="shadow-md min-w-48 rounded-md z-0">
+        <Link href={`/${locale}/movies/${media.id}`}>
           <div className="w-full h-64 relative">
             <Image
               src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${media.poster_path}`}
