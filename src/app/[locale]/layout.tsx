@@ -16,9 +16,10 @@ export function generateStaticParams(){
 }
 
 export default function RootLayout({
-  children, params: { locale }
+  children, params: { locale}
 }: Readonly<{
   children: React.ReactNode;
+  params: {locale: string}
 }>) {
   return (
     <html lang={locale}>

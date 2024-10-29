@@ -3,7 +3,7 @@
 import { notFound, useSelectedLayoutSegment, useParams } from "next/navigation";
 import Form from "@/components/Search-SideBar/Form/Form"
 
-export default function SearchSideBar({genres}){
+export default function SearchSideBar({genres, locale}){
     const segment = useSelectedLayoutSegment();
     const {id} = useParams();
 
@@ -23,7 +23,7 @@ export default function SearchSideBar({genres}){
         <>
         <div className="m-4">
             <h1 className="text-lg text-red-500 font-semibold mb-5">Tous les &quot;{title}&quot;</h1>
-            <Form/>
+            <Form locale={locale}/>
         </div>
         </>
     )

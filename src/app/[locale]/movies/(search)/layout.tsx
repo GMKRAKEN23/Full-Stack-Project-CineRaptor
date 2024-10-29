@@ -1,7 +1,14 @@
-import SearchSideBar from "@/components/Search-SideBar/SearchSideBar"
-import { getMovieByPath } from "@/utils/movieClient"
+import SearchSideBar from "@/components/Search-SideBar/SearchSideBar";
+import { getMovieByPath } from "@/utils/movieClient";
 
-export default async function MovieSearchLayout({children, locale } : {children : React.ReactNode}){
+interface MovieSearchLayoutProps{
+    children: React.ReactNode;
+    params: {
+        locale: string;
+    }
+}
+
+export default async function MovieSearchLayout({children,  params: { locale }}: MovieSearchLayoutProps){
 
     const {genres} = await getMovieByPath("/genre/movie/list", [], locale);
 

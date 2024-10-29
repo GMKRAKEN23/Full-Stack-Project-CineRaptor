@@ -2,7 +2,22 @@ import Image from "next/image";
 import MovieCredits from "../Movie-credits/MovieCredits";
 import { Suspense } from "react";
 
-export default function MovieDetails({ movie, locale }){
+interface Movie {
+  id: number;
+  title: string;
+  backdrop_path: string;
+  poster_path: string;
+  release_date: string;
+  production_companies: { name: string }[]; 
+  overview: string;
+}
+
+interface MovieDetailsProps {
+  movie: Movie;
+  locale: string;
+}
+
+export default function MovieDetails({ movie, locale }: MovieDetailsProps){
   return (
     <div className="relative w-full min-h-[60vh]">
       <div className="absolute inset-0 z-10">

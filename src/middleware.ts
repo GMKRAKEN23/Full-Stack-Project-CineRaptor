@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getLocaleUrlToRedirect } from "./utils/i18n";
 
-export function middleware(request){
+export function middleware(request: NextRequest){
     const newLocaleURL = getLocaleUrlToRedirect(request);
 
     if(newLocaleURL){
