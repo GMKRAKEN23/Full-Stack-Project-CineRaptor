@@ -6,13 +6,13 @@ export default function Form(){
     const router = useRouter();
     const pathname = usePathname();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const searchParams =new URLSearchParams();
-        searchParams.append("sort_by", form.get('sort'));
-        searchParams.append("release_date.gte", form.get('fromDate'));
-        searchParams.append("release_date.lte", form.get('toDate'));
+        searchParams.append("sort_by", form.get('sort') as string);
+        searchParams.append("release_date.gte", form.get('fromDate') as string);
+        searchParams.append("release_date.lte", form.get('toDate') as string);
         
         router.push(`${pathname}?${searchParams.toString()}`);
     }

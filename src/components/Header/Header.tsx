@@ -11,32 +11,32 @@ const user = {
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 
-const navigation = [
-  { name: 'Séries', href: '#', current: true },
+const navigation = [  
   { name: 'Films', href: '/movies', current: false },
+  { name: 'Séries', href: '#', current: true },
 ]
+
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' },
 ]
 
-function classNames(...classes) {
+function classNames(...classes: (string | undefined)[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Header({locale}) {
+interface HeaderProps{
+  locale: string,
+}
+
+export default function Header({locale}: HeaderProps) {
   return (
     <Disclosure as="header" className="bg-white shadow">
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
         <div className="relative flex h-16 justify-between">
           <div className="relative z-10 flex px-2 lg:px-0">
             <div className="flex flex-shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
-              />
+             <h1>Cineraptor</h1>
             </div>
           </div>
           <div className="relative flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
@@ -116,9 +116,6 @@ export default function Header({locale}) {
         </div>
         <div className="border-t border-gray-200 pb-3 pt-4">
           <div className="flex items-center px-4">
-            <div className="flex-shrink-0">
-              <img alt="" src={user.imageUrl} className="h-10 w-10 rounded-full" />
-            </div>
             <div className="ml-3">
               <div className="text-base font-medium text-gray-800">{user.name}</div>
               <div className="text-sm font-medium text-gray-500">{user.email}</div>

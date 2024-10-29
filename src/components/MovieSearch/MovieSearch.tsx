@@ -4,14 +4,22 @@ import { useState } from "react";
 import { DebounceInput } from "react-debounce-input";
 import MovieSearchResults from "./MovieSearchResults/MovieSearchResults";
 
-export default function MovieSearch({locale}) {
-  const [movieResults, setMovieResults] = useState([]);
-  const [hasFocus, setHasFocus] = useState(false);
+interface MovieSearchProps {
+  locale: string; 
+}
 
-  const updateMovieSearch = async (query) => {
+interface Movie{
+  backdrop_path: string,
+}
+
+export default function MovieSearch({locale} : MovieSearchProps) {
+  const [movieResults, setMovieResults] = useState([]);
+  const [hasFocus, setHasFocus] = useState<boolean>(false);
+
+  const updateMovieSearch = async (query: string) => {
     const response = await fetch(`/api/movies/search?query=${query}`);
     const { results } = await response.json();
-    setMovieResults(results.filter((movie) => movie.backdrop_path));
+    setMovieResults(results.filter((movie: Movie) => movie.backdrop_path));
   };
 
   return (

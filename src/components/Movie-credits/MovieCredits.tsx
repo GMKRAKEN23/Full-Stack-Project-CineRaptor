@@ -1,11 +1,22 @@
 import { getMovieByPath } from "@/utils/movieClient";
 import Image from "next/image";
 
-export default async function MovieCredits({ movieId, locale}) {
+interface MovieCreditsProps{
+  movieId: number;
+  locale: string;
+}
+
+interface Person {
+  id: number;
+  profile_path: string | null; 
+  name: string;
+}
+
+export default async function MovieCredits({ movieId, locale} : MovieCreditsProps) {
   const { cast } = await getMovieByPath(`/movie/${movieId}/credits`, [], locale);
   return (
     <div className="flex gap-6">
-      {cast.slice(0, 4).map((person) => (
+      {cast.slice(0, 4).map((person: Person) => (
         <div
           key={person.id}
           className="flex flex-col items-center mt-2"

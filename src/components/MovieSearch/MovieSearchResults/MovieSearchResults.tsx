@@ -1,7 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function MovieSearchResults({ movieResults, locale }) {
+interface MovieSearchResultsProps{
+    movieResults: Movie[];
+    locale: string;
+}
+
+interface Movie{
+    id: number,
+    title: string,
+    backdrop_path: string,
+}
+
+export default function MovieSearchResults({ movieResults, locale } : MovieSearchResultsProps) {
     return (
         <div className="absolute z-[200] top-11 bg-white p-2.5 shadow-xl">
             {movieResults.map((movie) => (

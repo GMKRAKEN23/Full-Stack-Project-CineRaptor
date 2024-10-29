@@ -1,7 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function MediaCard({ media, locale }) {
+interface MediaCardProps{
+  locale: string;
+  media: Media;
+}
+
+interface Media{
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  release_date: string;
+}
+
+export default function MediaCard({ media, locale } : MediaCardProps) {
   return (
     <div className="shadow-md min-w-48 rounded-md z-0">
         <Link href={`/${locale}/movies/${media.id}`}>

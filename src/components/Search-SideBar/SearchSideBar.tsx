@@ -1,11 +1,21 @@
 "use client";
 
 import { notFound, useSelectedLayoutSegment, useParams } from "next/navigation";
-import Form from "@/components/Search-SideBar/Form/Form"
+import Form from "@/components/Search-SideBar/Form/Form";
 
-export default function SearchSideBar({genres, locale}){
+interface Genre {
+    id: number;  
+    name: string; 
+}
+
+interface SearchSideBarProps {
+    genres: Genre[];
+    locale: string;  
+}
+
+export default function SearchSideBar({genres, locale} : SearchSideBarProps){
     const segment = useSelectedLayoutSegment();
-    const {id} = useParams();
+    const {id} = useParams<{id: string}>();
 
     const getSideBarTitle = () => {
         if(!segment){
