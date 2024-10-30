@@ -7,22 +7,38 @@ interface SearchResultsProps {
     locale: string;
 }
 
-export default async function SearchResults({searchParams, genreId, locale} : SearchResultsProps){
+interface Movie {
+    id: number;
+    title: string;
+    poster_path: string;
+    vote_average: number;
+    release_date: string;
+}
 
-    const { results } = await getMovieByPath("/discover/movie", [
-        { key: "sort_by", value: searchParams.sort_by },
-        { key: "release_date.gte", value: searchParams["release_date.gte"] },
-        { key: "release_date.lte", value: searchParams["release_date.lte"] },
-        { key: "with_genres", value: genreId },
-      ]);
+interface MovieResponse {
+    results: Movie[];
+}
 
-    return(
+export default async function SearchResults({ searchParams, genreId, locale}: SearchResultsProps) {
+
+    const { results }: MovieResponse = await getMovieByPath("/discover/movie", [
+        { key: "sort_by", value: searchParams.sort_by || "popularity.desc" },
+        { key: "release_date.gte", value: searchParams["release_date.gte"] || "" },
+        { key: "release_date.lte", value: searchParams["release_date.lte"] || "" },
+        { key: "with_genres", value: genreId || "" },
+    ]);
+
+    return (
         <div className="flex flex-wrap gap-8">
             {results
                 .filter((movie) => movie.poster_path)
                 .map((movie) => (
-                <MediaCard key={movie.id} media={movie} locale={locale}/>
-            ))}
+                    <div
+                        key={movie.id} 
+                    > 
+                    <MediaCard media={movie} locale={locale} />
+                    </div>
+                ))}
         </div>
-    )
+    );
 }

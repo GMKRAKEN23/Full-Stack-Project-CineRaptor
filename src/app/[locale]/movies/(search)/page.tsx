@@ -1,12 +1,16 @@
 import SearchResults from "./SearchResults";
 
-interface MoviesPageProps {
-    searchParams: Record<string, string | undefined>
-    locale: string;
-}
+interface GenreIdPageProps {
+    params: {
+        id: string; 
+    };
+    searchParams: Record<string, string | undefined>;
+    locale: string; 
+    genreId: string;
+  }
 
-export default function MoviesPage({searchParams, locale}: MoviesPageProps ){
+export default function MoviesPage({searchParams, locale, genreId}: GenreIdPageProps ){
     return(
-        <SearchResults searchParams={searchParams} locale={locale}/>
+        <SearchResults searchParams={searchParams} locale={locale} genreId={genreId}/>
     )
 }

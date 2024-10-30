@@ -15,6 +15,7 @@ interface Media{
 }
 
 export default function MediaCard({ media, locale } : MediaCardProps) {
+  
   return (
     <div className="shadow-md min-w-48 rounded-md z-0">
         <Link href={`/${locale}/movies/${media.id}`}>

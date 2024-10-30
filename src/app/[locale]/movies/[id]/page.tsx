@@ -15,7 +15,6 @@ interface MoviesIdPageProps{
 }
 
 export default async function MoviesIdPage( {params: {id, locale}}:  MoviesIdPageProps){
-
     const movie = await getMovieByPath(`/movie/${id}`, [], locale);
 
     if(!movie.original_title){

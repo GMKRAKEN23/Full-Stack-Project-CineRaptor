@@ -1,7 +1,7 @@
 type Locale = 'en' | 'fr';
 
 interface DictionaryEntry {
-    title: string; // Propriété que chaque entrée doit avoir
+    title: string; 
 }
 
 interface Dictionary {
