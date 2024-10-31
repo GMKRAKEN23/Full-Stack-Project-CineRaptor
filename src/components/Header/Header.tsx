@@ -5,26 +5,6 @@ import MovieSearch from '../MovieSearch/MovieSearch';
 import LanguageSelector from '../Language-selector/LanguageSelector';
 import Link from 'next/link';
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
-
-const navigation = [  
-  { name: 'Films', href: '/movies', current: false },
-  { name: 'Séries', href: '#', current: true },
-]
-
-const userNavigation = [
-  { name: 'Sign out', href: '#' },
-]
-
-function classNames(...classes: (string | undefined)[]): string {
-  return classes.filter(Boolean).join(' ')
-}
-
 interface HeaderProps{
   locale: string,
 }
@@ -48,7 +28,7 @@ export default function Header({locale}: HeaderProps) {
                 Search
               </label>
               <div className="relative">
-                <MovieSearch locale={locale}/>
+                <MovieSearch locale={locale as "en" | "fr"}/>
               </div>
             </div>
           </div>
@@ -83,66 +63,25 @@ export default function Header({locale}: HeaderProps) {
             </Menu>
           </div>
         </div>
-        <nav aria-label="Global" className="hidden lg:flex lg:justify-end lg:space-x-8 lg:py-2">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-                'inline-flex items-center rounded-md px-3 py-2 text-sm font-medium',
-              )}
-            >
-              {item.name}
-            </a>
-          ))}
-        </nav>
       </div>
 
       <DisclosurePanel as="nav" aria-label="Global" className="lg:hidden">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          {navigation.map((item) => (
-            <DisclosureButton
-              key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-                'block rounded-md px-3 py-2 text-base font-medium',
-              )}
-            >
-              {item.name}
-            </DisclosureButton>
-          ))}
-        </div>
         <div className="border-t border-gray-200 pb-3 pt-4">
           <div className="flex items-center px-4">
             <div className="ml-3">
-              <div className="text-base font-medium text-gray-800">{user.name}</div>
-              <div className="text-sm font-medium text-gray-500">{user.email}</div>
-            </div>
-            <button
+                          <button
               type="button"
               className="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <span className="absolute -inset-1.5" />
-              <span className="sr-only">View notifications</span>
               <FaUser aria-hidden="true" className="h-6 w-6" />
             </button>
+            </div>
+
           </div>
           <div className="mt-3 space-y-1 px-2">
-            {userNavigation.map((item) => (
-              <DisclosureButton
-                key={item.name}
-                as="a"
-                href={item.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-              >
-                {item.name}
-              </DisclosureButton>
-            ))}
+
+            {/* add FR*/}
           </div>
         </div>
       </DisclosurePanel>

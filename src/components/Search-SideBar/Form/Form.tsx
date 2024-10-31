@@ -8,7 +8,6 @@ interface FormProps {
     locale: "en" | "fr";
 }
 
-
 export default function Form({ locale }: FormProps) {
     const router = useRouter();
     const pathname = usePathname();

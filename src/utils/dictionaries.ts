@@ -18,7 +18,7 @@ interface FormEntry {
 export default interface Dictionary {
     popular: SimpleEntry;
     genre: SimpleEntry;
-    seachBarHeader: SimpleEntry;
+    searchBarHeader: SimpleEntry;
     form: FormEntry;
 }
 
