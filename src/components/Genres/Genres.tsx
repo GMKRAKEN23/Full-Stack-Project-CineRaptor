@@ -2,18 +2,21 @@ import { getMovieByPath } from "@/utils/movieClient";
 import Link from "next/link";
 import { getDictionary } from "@/utils/dictionaries";
 
+type Locale = "en" | "fr";
+
 interface Genre {
     id: string;
     name: string;
 }
 
 interface GenresProps {
-    locale: string;
+    locale: Locale;
 }
 
 export default async function Genres({ locale }: GenresProps) {
     const { genres }: { genres: Genre[] } = await getMovieByPath("/genre/movie/list", [], locale);
     const i18n = await getDictionary(locale);
+
     return (
         <div>
             <h2 className="font-semibold text-lg font-montserrat my-4">{i18n.genre.title}</h2>

@@ -1,16 +1,30 @@
 type Locale = 'en' | 'fr';
 
-interface DictionaryEntry {
-    title: string; 
+interface SimpleEntry {
+    title: string;
 }
 
-interface Dictionary {
-    [key: string]: DictionaryEntry; 
+interface FormEntry {
+    filter: string;
+    release_date: string;
+    du: string;
+    at: string;
+    sort_by: string;
+    popularity: string;
+    note: string;
+    number_of_notes: string;
 }
 
-const dictionnaries: Record<Locale, () => Promise<Dictionary>> = {
-    en: () => import("../dictionaries/en.json").then((module) => module.default),
-    fr: () => import("../dictionaries/fr.json").then((module) => module.default),
+export default interface Dictionary {
+    popular: SimpleEntry;
+    genre: SimpleEntry;
+    seachBarHeader: SimpleEntry;
+    form: FormEntry;
 }
 
-export const getDictionary = async (locale: Locale): Promise<Dictionary> => dictionnaries[locale]();
+const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
+    en: () => import("../dictionaries/en.json").then((module) => module.default as Dictionary),
+    fr: () => import("../dictionaries/fr.json").then((module) => module.default as Dictionary),
+};
+
+export const getDictionary = async (locale: Locale): Promise<Dictionary> => dictionaries[locale]();

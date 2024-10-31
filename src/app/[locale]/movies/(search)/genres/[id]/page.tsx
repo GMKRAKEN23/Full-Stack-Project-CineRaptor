@@ -3,32 +3,29 @@ import SearchResults from "../../SearchResults";
 
 interface GenreIdPageProps {
   params: {
-      id: string; // ID du genre
-      locale: string; // Locale, par exemple 'fr'
+      id: string;
+      locale: string; 
   };
-  searchParams: Record<string, string | undefined>; // Paramètres de recherche
+  searchParams: Record<string, string | undefined>; 
 }
 
 export default function GenreIdPage({ params, searchParams }: GenreIdPageProps) {
-  const { id, locale } = params; // Déstructuration correcte
+  const { id, locale } = params; 
 
-  // Vérifiez que les paramètres sont correctement récupérés
-  console.log("Genre ID:", id); // Pour déboguer
-  console.log("Locale:", locale); // Pour déboguer
-  console.log("Search Params:", searchParams); // Pour déboguer
+  console.log("Genre ID:", id); 
+  console.log("Locale:", locale); 
+  console.log("Search Params:", searchParams);
 
-  // Vérifiez que la locale et genreId ne sont pas vides
   if (!locale) {
-      console.error("Locale est manquant.");
-      return <div>Erreur: Locale manquante.</div>; // Afficher un message d'erreur
+      console.error("Locale is missing.");
+      return <div>Error: Locale is missing..</div>;
   }
 
   if (!id) {
-      console.error("Genre ID est manquant.");
-      return <div>Erreur: Genre ID manquant.</div>; // Afficher un message d'erreur
+      console.error("Gender ID is missing.");
+      return <div>Error: Gender ID is missing.</div>; 
   }
 
-  // Passer le genre ID et la locale à SearchResults
   return (
       <SearchResults 
           searchParams={searchParams} 

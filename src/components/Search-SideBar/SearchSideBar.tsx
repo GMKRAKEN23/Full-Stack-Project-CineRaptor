@@ -13,7 +13,7 @@ interface SearchSideBarProps {
     locale: string;
 }
 
-export default function SearchSideBar({genres} : SearchSideBarProps){
+export default function SearchSideBar({genres, locale} : SearchSideBarProps){
     const segment = useSelectedLayoutSegment();
     const {id} = useParams<{id: string}>();
 
@@ -33,7 +33,7 @@ export default function SearchSideBar({genres} : SearchSideBarProps){
         <>
         <div className="m-4">
             <h1 className="text-lg text-red-500 font-semibold mb-5">Tous les &quot;{title}&quot;</h1>
-            <Form />
+            <Form locale={locale as "en" | "fr"}/>
         </div>
         </>
     )

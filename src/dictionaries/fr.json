@@ -5,5 +5,20 @@
 
     "genre": {
         "title": "Parcourir par genres"
+    },
+
+    "seachBarHeader": {
+        "title": "Rechercher un titre"
+    },
+
+    "form":{
+        "filter": "filtrer",
+        "release_date": "Date de sortie",
+        "du": "Du",
+        "at": "au",
+        "sort_by": "Trier par",
+        "popularity": "Popularité",
+        "note": "Note",
+        "number_of_notes": "Nombre de notes"
     }
 }

@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaUser } from "react-icons/fa";
 import MovieSearch from '../MovieSearch/MovieSearch';
 import LanguageSelector from '../Language-selector/LanguageSelector';
+import Link from 'next/link';
 
 const user = {
   name: 'Tom Cook',
@@ -29,13 +30,16 @@ interface HeaderProps{
 }
 
 export default function Header({locale}: HeaderProps) {
+
   return (
     <Disclosure as="header" className="bg-white shadow">
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
         <div className="relative flex h-16 justify-between">
           <div className="relative z-10 flex px-2 lg:px-0">
             <div className="flex flex-shrink-0 items-center">
-             <h1>Cineraptor</h1>
+             <Link href="/">
+                <h1>Cineraptor</h1>
+             </Link>
             </div>
           </div>
           <div className="relative flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
