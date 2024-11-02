@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Like from "@/components/Media-card/Like/Like"
 
 interface MediaCardProps{
   locale: string;
@@ -7,7 +8,7 @@ interface MediaCardProps{
 }
 
 interface Media{
-  id: number;
+  id: string;
   title: string;
   poster_path: string;
   vote_average: number;
@@ -20,6 +21,7 @@ export default function MediaCard({ media, locale } : MediaCardProps) {
     <div className="shadow-md min-w-48 rounded-md z-0">
         <Link href={`/${locale}/movies/${media.id}`}>
           <div className="w-full h-64 relative">
+            <Like mediaId={media.id}/>
             <Image
               src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${media.poster_path}`}
               alt={media.title}

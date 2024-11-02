@@ -13,3 +13,11 @@ export const getMovieByPath = (path : string, params: Array<{key: string; value:
 });
   return fetch(url).then((res) => res.json());
 };
+
+export const getHydrateMovies = async (movieIds: string[], language: string= "fr") => {
+  const moviesPromises = movieIds.map((movieId) => getMovieByPath(`/movie/${movieId}`, [], language));
+
+  const movies = await Promise.all(moviesPromises);
+
+  return movies
+}

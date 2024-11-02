@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { roboto, montserrat } from "@/app/fonts/fonts";
 import "./globals.css";
 import { availableLocales } from "@/utils/i18n";
+import AuthProvider from "@/components/Auth-provider/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,7 +29,9 @@ export default function RootLayout({
       >
       <Header locale={locale}/>
         <main>
+          <AuthProvider>
           {children}
+          </AuthProvider>
         </main>
       </body>
     </html>
