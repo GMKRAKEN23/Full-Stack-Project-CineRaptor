@@ -58,7 +58,7 @@ export default function MovieDetails({ movie, locale }: MovieDetailsProps){
           <h2 className="text-white text-sm font-bold my-3">Synopsis</h2>
           <p className="text-sm leading-6 font-light line-clamp-5">{movie.overview}</p>
           <div className="mt-auto">
-            <Suspense fallback={<p>Chargement...</p>}>
+            <Suspense fallback={<p>Loading...</p>}>
                 <MovieCredits movieId={movie.id} locale={locale}/> 
             </Suspense>
           </div>

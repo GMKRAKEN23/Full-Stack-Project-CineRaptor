@@ -2,12 +2,12 @@ import { getMovieByPath } from "@/utils/movieClient";
 import MediaCard from "../Media-card/MediaCard";
 import { getDictionary } from "@/utils/dictionaries";
 
-interface PopularProps{
-    locale: string;
-}
+interface PopularProps {
+    locale: "en" | "fr";
+  }
 
 interface Movie{
-    id: number;
+    id: string;
     title: string;
     poster_path: string;
     vote_average: number; 
@@ -18,6 +18,7 @@ export default async function Popular({locale} : PopularProps){
     const { results } = await getMovieByPath("/movie/popular", [], locale)
     const popularMovies = results.slice( 0, 6);
     const i18n = await getDictionary(locale);
+
     return(
         <div>
             <h2 className="font-semibold text-lg font-montserrat my-4">{i18n.popular.title}</h2>

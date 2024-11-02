@@ -1,5 +1,5 @@
 import Negotiator from "negotiator";
-import {match} from "@formatjs/intl-localematcher"
+import { match } from "@formatjs/intl-localematcher"
 import { NextRequest } from "next/server";
 
 export const availableLocales = ["en", "fr"];

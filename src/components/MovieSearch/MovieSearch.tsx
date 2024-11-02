@@ -48,7 +48,7 @@ export default function MovieSearch({locale} : MovieSearchProps) {
             min={2}
             debounceTimeout={500}
             onChange={(e) => updateMovieSearch(e.target.value)}
-            placeholder={i18n ? i18n.searchBarHeader.title : "Chargement..."}
+            placeholder={i18n ? i18n.searchBarHeader.title : "Loading..."}
             className="block w-full relative rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
         />
              {movieResults.length > 0 && (

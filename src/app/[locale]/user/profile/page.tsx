@@ -4,6 +4,7 @@ import prisma from "@/utils/prisma";
 import { getHydrateMovies } from "@/utils/movieClient";
 import MediaCard from "@/components/Media-card/MediaCard";
 import { Session } from "next-auth"; 
+import { getDictionary } from "@/utils/dictionaries";
 
 interface UserLikes {
   id: number;
@@ -22,7 +23,15 @@ interface CustomSession extends Session {
   };
 }
 
-const ProfilePage = async ({ params }: { params: { locale: string } }) => {
+interface ProfilePageParams {
+    params: {
+        locale: "en" | "fr"; 
+    };
+}
+
+const ProfilePage = async ({ params }: ProfilePageParams) => {
+
+  const i18n = await getDictionary(params.locale);
   const session: CustomSession | null = await getServerSession();
 
   if (!session || !session.user) {
@@ -46,10 +55,10 @@ const ProfilePage = async ({ params }: { params: { locale: string } }) => {
   return (
     <div>
       <div>
-        <h1>Liste des films aimés</h1>
-        <LogoutButton />
+        <h1>{i18n.profilPage.title}</h1>
+        <LogoutButton locale={params.locale}/>
       </div>
-      <div className="">
+      <div>
         {movies.map((movie) => (
           <MediaCard media={movie} locale={params.locale} key={movie.id} />
         ))}

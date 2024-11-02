@@ -20,5 +20,17 @@
         "popularity": "Popularity",
         "note": "Note",
         "number_of_notes": "Number of notes"
+    },
+
+    "header": {
+        "login": "Login"
+    },
+
+    "logoutButton": {
+        "logout": "Logout"
+    },
+
+    "profilPage":{
+        "title": "List of liked films"
     }
 }

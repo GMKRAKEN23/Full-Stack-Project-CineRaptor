@@ -20,5 +20,17 @@
         "popularity": "Popularité",
         "note": "Note",
         "number_of_notes": "Nombre de notes"
+    }, 
+
+    "header": {
+        "login": "Inscription"
+    }, 
+
+    "logoutButton": {
+        "logout": "Déconnexion"
+    },
+
+    "profilPage":{
+        "title": "Liste des films aimés"
     }
 }

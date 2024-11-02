@@ -1,4 +1,3 @@
-// Form.tsx
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getDictionary } from "@/utils/dictionaries";

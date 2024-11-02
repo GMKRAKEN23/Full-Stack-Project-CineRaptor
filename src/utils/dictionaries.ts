@@ -2,6 +2,8 @@ type Locale = 'en' | 'fr';
 
 interface SimpleEntry {
     title: string;
+    login: string;
+    logout: string;
 }
 
 interface FormEntry {
@@ -20,6 +22,9 @@ export default interface Dictionary {
     genre: SimpleEntry;
     searchBarHeader: SimpleEntry;
     form: FormEntry;
+    header: SimpleEntry;
+    logoutButton: SimpleEntry;
+    profilPage: SimpleEntry;
 }
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {

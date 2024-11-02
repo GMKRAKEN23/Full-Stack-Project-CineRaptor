@@ -24,7 +24,7 @@ export default async function MoviesIdPage( {params: {id, locale}}:  MoviesIdPag
     return(
         <div>
             <MovieDetails movie={movie} locale={locale} />
-            <Suspense fallback={<p>Chargement ...</p>}>
+            <Suspense fallback={<p>Loading ...</p>}>
                 <SimilarMovies movieId={movie.id} locale={locale}/>
             </Suspense>     
         </div>
