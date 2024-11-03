@@ -13,7 +13,7 @@ export default async function MovieSearchLayout({children,  params: { locale }}:
     const {genres} = await getMovieByPath("/genre/movie/list", [], locale);
 
     return(
-        <div>
+        <div className="flex ml-8 mt-8 ">
         <SearchSideBar genres={genres} locale={locale}/>
         <div>{children}</div>
         </div>
