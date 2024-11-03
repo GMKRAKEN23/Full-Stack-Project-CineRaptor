@@ -8,6 +8,7 @@ interface SimpleEntry {
     emailPlaceholder: string;
     passwordLabel: string;
     passwordPlaceholder: string;
+    password: string;
 }
 
 interface FormEntry {

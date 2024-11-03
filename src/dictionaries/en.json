@@ -36,7 +36,8 @@
 
   "signup": {
     "title": "Signup",
-    "submit": "register"
+    "password": "Password",
+    "submit": "Register"
   },
 
   "login": {

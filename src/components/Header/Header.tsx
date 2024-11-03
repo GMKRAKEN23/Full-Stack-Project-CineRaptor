@@ -30,11 +30,11 @@ export default async function Header({ locale }: PopularProps) {
                 <div className="flex justify-center items-center">
                   <LogoSVG />
                   <h1 className="font-semibold tracking-widest hidden md:block">
-                    <span className="uppercase text-blue-500 font-bold text-lg">
+                    <span className="uppercase text-sky-500 font-bold text-lg">
                       C
                     </span>
                     ine
-                    <span className="uppercase font-bold text-blue-500 ">
+                    <span className="uppercase font-bold text-sky-500 ">
                       r
                     </span>
                     aptor
@@ -75,7 +75,7 @@ export default async function Header({ locale }: PopularProps) {
             <Link href={`/${locale}/user/profile`}>
               <FaUser
                 aria-hidden="true"
-                className="ml-4 h-5 w-5 text-blue-500"
+                className="ml-4 h-5 w-5 text-sky-500"
               />
             </Link>
 

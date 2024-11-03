@@ -6,6 +6,7 @@ import Image from "next/image";
 interface MovieSearchResultsProps{
     movieResults: Movie[];
     locale?: string;
+    onResultClick: () => void; 
 }
 
 interface Movie{
@@ -14,7 +15,7 @@ interface Movie{
     backdrop_path: string,
 }
 
-export default function MovieSearchResults({ movieResults, locale }: MovieSearchResultsProps) {
+export default function MovieSearchResults({ movieResults, locale}: MovieSearchResultsProps) {
   return (
     <div className="absolute z-[200] top-11 bg-white p-2.5 shadow-xl">
       {movieResults.map((movie) => (
@@ -27,10 +28,8 @@ export default function MovieSearchResults({ movieResults, locale }: MovieSearch
               src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${movie.backdrop_path}`}
               className="rounded-md"
             />
-            <p className="pl-2">{movie.title}</p>
-            
-          </Link>
-         
+            <p className="pl-2">{movie.title}</p>         
+          </Link>      
         </div>
       ))}
     </div>

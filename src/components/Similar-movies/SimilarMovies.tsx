@@ -18,7 +18,7 @@ export default async function SimilarMovies({movieId, locale} : SimilarMoviesPro
     const { results } = await getMovieByPath(`/movie/${movieId}/similar`, [], locale)
     return(
         <div className="flex justify-center">
-            <div className="flex justify-center gap-5 mt-5 mb-8 w-48 ">
+            <div className="flex justify-center gap-5 mt-5 mb-8  ">
                 {results.slice(0, 6).map((movie: Movie)=> (
                     <MediaCard media={movie} key={movie.id} locale={locale}/>
                 ))}
