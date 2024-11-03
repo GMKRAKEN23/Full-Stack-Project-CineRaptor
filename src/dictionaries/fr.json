@@ -1,36 +1,47 @@
 {
-    "popular": {
-        "title": "Les plus populaires"
-    },
+  "popular": {
+    "title": "Les plus populaires"
+  },
 
-    "genre": {
-        "title": "Parcourir par genres"
-    },
+  "genre": {
+    "title": "Parcourir par genres"
+  },
 
-    "searchBarHeader": {
-        "title": "Rechercher un titre"
-    },
+  "searchBarHeader": {
+    "title": "Rechercher un titre"
+  },
 
-    "form":{
-        "filter": "filtrer",
-        "release_date": "Date de sortie",
-        "du": "Du",
-        "at": "au",
-        "sort_by": "Trier par",
-        "popularity": "Popularité",
-        "note": "Note",
-        "number_of_notes": "Nombre de notes"
-    }, 
+  "form": {
+    "filter": "filtrer",
+    "release_date": "Date de sortie",
+    "du": "Du",
+    "at": "au",
+    "sort_by": "Trier par",
+    "popularity": "Popularité",
+    "note": "Note",
+    "number_of_notes": "Nombre de notes"
+  },
 
-    "header": {
-        "login": "Inscription"
-    }, 
+  "header": {
+    "login": "Inscription"
+  },
 
-    "logoutButton": {
-        "logout": "Déconnexion"
-    },
+  "logoutButton": {
+    "logout": "Déconnexion"
+  },
 
-    "profilPage":{
-        "title": "Liste des films aimés"
-    }
+  "profilPage": {
+    "title": "Liste des films aimés"
+  },
+
+  "signup": {
+    "title": "Inscription",
+    "submit": "s'inscrire"
+  },
+
+  "login": {
+    "emailPlaceholder": "Votre e-mail",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Votre mot de passe"
+  }
 }

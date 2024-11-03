@@ -20,7 +20,7 @@ export default function RootLayout({
   children, params: { locale}
 }: Readonly<{
   children: React.ReactNode;
-  params: {locale: string}
+  params: { locale: "en" | "fr" }
 }>) {
   return (
     <html lang={locale}>

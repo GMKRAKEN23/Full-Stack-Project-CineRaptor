@@ -5,7 +5,7 @@ export const revalidate = 86400;
 
 interface HomeProps{
   params: {
-    locale: string;
+    locale: "en" | "fr"; 
   }
 }
 

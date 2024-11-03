@@ -1,36 +1,47 @@
 {
-    "popular": {
-        "title": "Most popular"
-    },
+  "popular": {
+    "title": "Most popular"
+  },
 
-    "genre": {
-        "title": "Browse by genres"
-    },
+  "genre": {
+    "title": "Browse by genres"
+  },
 
-    "searchBarHeader": {
-        "title": "Search for a title"
-    },
-    
-    "form":{
-        "filter": "filter",
-        "release_date": "Release date",
-        "du": "Du",
-        "at": "at",
-        "sort_by": "Sort by",
-        "popularity": "Popularity",
-        "note": "Note",
-        "number_of_notes": "Number of notes"
-    },
+  "searchBarHeader": {
+    "title": "Search for a title"
+  },
 
-    "header": {
-        "login": "Login"
-    },
+  "form": {
+    "filter": "filter",
+    "release_date": "Release date",
+    "du": "Du",
+    "at": "at",
+    "sort_by": "Sort by",
+    "popularity": "Popularity",
+    "note": "Note",
+    "number_of_notes": "Number of notes"
+  },
 
-    "logoutButton": {
-        "logout": "Logout"
-    },
+  "header": {
+    "login": "Login"
+  },
 
-    "profilPage":{
-        "title": "List of liked films"
-    }
+  "logoutButton": {
+    "logout": "Logout"
+  },
+
+  "profilPage": {
+    "title": "List of liked films"
+  },
+
+  "signup": {
+    "title": "Signup",
+    "submit": "register"
+  },
+
+  "login": {
+    "emailPlaceholder": "Your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Your password"
+  }
 }

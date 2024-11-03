@@ -1,9 +1,16 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
-const SignupForm = () => {
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { getDictionary } from "@/utils/dictionaries";
+import Dictionary from "@/utils/dictionaries";
+
+interface SignupProps {
+  locale: "en" | "fr";
+}
+
+const SignupForm = ({locale} : SignupProps) => {
   const { status } = useSession();
   const router = useRouter();
 
@@ -29,13 +36,32 @@ const SignupForm = () => {
     });
   };
 
+  const [i18n, setI18n] = useState<Dictionary | null>(null);
+
+  useEffect(() => {
+      async function loadDictionary() {
+          try {
+              const dictionary = await getDictionary(locale);
+              setI18n(dictionary);
+          } catch (error) {
+              console.error("Erreur lors du chargement du dictionnaire:", error);
+          }
+      }
+  
+      if (locale === "en" || locale === "fr") {
+          loadDictionary();
+      } else {
+          console.error(`Locale invalide: ${locale}`);
+      }
+  }, [locale]);
+
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
-        <h1>Inscription</h1>
+        <h1>{i18n ? i18n.signup.title : "loading..."}</h1>
         <input type="text" name="email" placeholder="E-mail" />
         <input type="password" name="password" placeholder="******" />
-        <input type="submit" value="S'inscrire" />
+        <input type="submit" value={i18n ? i18n.signup.submit : "loading..."} />
       </form>
     </div>
   );

@@ -4,6 +4,10 @@ interface SimpleEntry {
     title: string;
     login: string;
     logout: string;
+    submit: string;
+    emailPlaceholder: string;
+    passwordLabel: string;
+    passwordPlaceholder: string;
 }
 
 interface FormEntry {
@@ -25,6 +29,8 @@ export default interface Dictionary {
     header: SimpleEntry;
     logoutButton: SimpleEntry;
     profilPage: SimpleEntry;
+    signup: SimpleEntry;
+    login: SimpleEntry;
 }
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
