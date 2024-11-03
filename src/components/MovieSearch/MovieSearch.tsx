@@ -5,6 +5,7 @@ import { DebounceInput } from "react-debounce-input";
 import MovieSearchResults from "./MovieSearchResults/MovieSearchResults";
 import { getDictionary } from "@/utils/dictionaries";
 import Dictionary from "@/utils/dictionaries";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 interface MovieSearchProps {
    locale: "en" | "fr";
@@ -31,14 +32,14 @@ export default function MovieSearch({locale} : MovieSearchProps) {
             const dictionary = await getDictionary(locale);
             setI18n(dictionary);
         } catch (error) {
-            console.error("Erreur lors du chargement du dictionnaire:", error);
+            console.error("Error for loading dictionnaries:", error);
         }
     }
 
     if (locale === "en" || locale === "fr") {
         loadDictionary();
     } else {
-        console.error(`Locale invalide: ${locale}`);
+        console.error(`Locale invalided: ${locale}`);
     }
 }, [locale]);
 
@@ -49,8 +50,12 @@ export default function MovieSearch({locale} : MovieSearchProps) {
             debounceTimeout={500}
             onChange={(e) => updateMovieSearch(e.target.value)}
             placeholder={i18n ? i18n.searchBarHeader.title : "Loading..."}
-            className="block w-full relative rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full relative rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset focus:outline-none ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
         />
+        <MagnifyingGlassIcon
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 left-3 h-full w-5 text-gray-400"
+                />
              {movieResults.length > 0 && (
         <MovieSearchResults movieResults={movieResults} locale={locale}/>
       )}

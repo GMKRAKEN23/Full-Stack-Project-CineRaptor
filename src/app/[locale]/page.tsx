@@ -11,7 +11,7 @@ interface HomeProps{
 
 export default function Home({params: {locale}}: HomeProps) {
   return (
-    <div className="m-6">
+    <div className="m-6 px-10">
     < Popular locale={locale}/>
     < Genres locale={locale} />
     </div>

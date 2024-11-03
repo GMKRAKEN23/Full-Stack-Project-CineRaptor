@@ -1,27 +1,45 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from "@headlessui/react";
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+} from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { FaUser } from "react-icons/fa";
 import MovieSearch from "../MovieSearch/MovieSearch";
 import LanguageSelector from "../Language-selector/LanguageSelector";
 import Link from "next/link";
 import { getDictionary } from "@/utils/dictionaries";
+import LogoSVG from "../Logo/Logo";
 
 interface PopularProps {
   locale: "en" | "fr";
 }
 
-export default async function Header( {locale} : PopularProps) {
-
+export default async function Header({ locale }: PopularProps) {
   const i18n = await getDictionary(locale);
 
   return (
     <Disclosure as="header" className="bg-white shadow">
-      <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+      <div className="mx-auto max-w-8xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
         <div className="relative flex h-16 justify-between">
           <div className="relative z-10 flex px-2 lg:px-0">
             <div className="flex flex-shrink-0 items-center">
               <Link href={`/${locale}`}>
-                <h1>Cineraptor</h1>
+                <div className="flex justify-center items-center">
+                  <LogoSVG />
+                  <h1 className="font-semibold tracking-widest hidden md:block">
+                    <span className="uppercase text-blue-500 font-bold text-lg">
+                      C
+                    </span>
+                    ine
+                    <span className="uppercase font-bold text-blue-500 ">
+                      r
+                    </span>
+                    aptor
+                  </h1>
+                </div>
               </Link>
             </div>
           </div>
@@ -55,7 +73,10 @@ export default async function Header( {locale} : PopularProps) {
               <p className="ml-4">{i18n.header.login}</p>
             </Link>
             <Link href={`/${locale}/user/profile`}>
-              <FaUser aria-hidden="true" className="ml-4 h-5 w-5 text-indigo-500" />
+              <FaUser
+                aria-hidden="true"
+                className="ml-4 h-5 w-5 text-blue-500"
+              />
             </Link>
 
             {/* Profile dropdown */}

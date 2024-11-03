@@ -21,8 +21,8 @@ export default async function Popular({locale} : PopularProps){
 
     return(
         <div>
-            <h2 className="font-semibold text-lg font-montserrat my-4">{i18n.popular.title}</h2>
-            <div className="flex gap-10 flex-wrap">
+            <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">{i18n.popular.title}</h2>
+            <div className="flex gap-10 flex-wrap md:justify-start justify-center">
                 {popularMovies.map((movie: Movie) => (
                     <MediaCard key={movie.id} media={movie} locale={locale}/>
                 ))}

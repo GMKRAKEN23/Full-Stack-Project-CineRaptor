@@ -28,7 +28,9 @@ export default function MovieSearchResults({ movieResults, locale }: MovieSearch
               className="rounded-md"
             />
             <p className="pl-2">{movie.title}</p>
+            
           </Link>
+         
         </div>
       ))}
     </div>

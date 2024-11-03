@@ -44,14 +44,14 @@ const SignupForm = ({locale} : SignupProps) => {
               const dictionary = await getDictionary(locale);
               setI18n(dictionary);
           } catch (error) {
-              console.error("Erreur lors du chargement du dictionnaire:", error);
+              console.error("Error for loading dictionnaries", error);
           }
       }
   
       if (locale === "en" || locale === "fr") {
           loadDictionary();
       } else {
-          console.error(`Locale invalide: ${locale}`);
+          console.error(`Locale invalided: ${locale}`);
       }
   }, [locale]);
 
