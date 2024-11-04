@@ -12,14 +12,14 @@
   },
 
   "form": {
-    "filter": "filtrer",
+    "filter": "Filtrer",
     "release_date": "Date de sortie",
-    "du": "Du",
-    "at": "au",
+    "from": "Du",
+    "to": "au",
     "sort_by": "Trier par",
     "popularity": "Popularité",
-    "note": "Note",
-    "number_of_notes": "Nombre de notes"
+    "rating": "Note",
+    "number_of_ratings": "Nombre de notes"
   },
 
   "header": {

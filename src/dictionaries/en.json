@@ -12,14 +12,14 @@
   },
 
   "form": {
-    "filter": "filter",
+    "filter": "Filter",
     "release_date": "Release date",
-    "du": "Du",
-    "at": "at",
+    "from": "From",
+    "to": "to",
     "sort_by": "Sort by",
     "popularity": "Popularity",
-    "note": "Note",
-    "number_of_notes": "Number of notes"
+    "rating": "Rating",
+    "number_of_ratings": "Number of ratings"
   },
 
   "header": {

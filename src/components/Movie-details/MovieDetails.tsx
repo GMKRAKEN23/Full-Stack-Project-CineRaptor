@@ -36,7 +36,7 @@ export default function MovieDetails({ movie, locale }: MovieDetailsProps){
           width={250}
           height={400}
           alt={movie.title}
-          className="flex-shrink-0"
+          className="flex-shrink-0 hidden md:flex"
         />
         
         <div className="flex flex-col flex-[0.6] text-white font-montserrat">

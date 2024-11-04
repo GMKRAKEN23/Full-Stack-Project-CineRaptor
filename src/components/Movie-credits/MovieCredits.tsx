@@ -15,7 +15,7 @@ interface Person {
 export default async function MovieCredits({ movieId, locale} : MovieCreditsProps) {
   const { cast } = await getMovieByPath(`/movie/${movieId}/credits`, [], locale);
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 hidden md:flex">
       {cast.slice(0, 4).map((person: Person) => (
         <div
           key={person.id}

@@ -44,28 +44,28 @@ export default function Form({ locale }: FormProps) {
     if (!i18n) return <p>Chargement...</p>;
 
     return (
-        <form onSubmit={handleSubmit} className="shadow-lg">
-            <h2 className="text-black text-lg py-2.5 px-4 m-0 border-b border-black">{i18n.form.filter}</h2>
-            <div className="pt-0 pr-4 pb-3 pl-4">
-                <h3 className="font-montserrat font-light mt-4 text-sm">{i18n.form.release_date}</h3>
+        <form onSubmit={handleSubmit} className="shadow-lg bg-white mr-2 w-72">
+            <h2 className="text-black text-md py-2.5 font-semibold px-4 m-0 border-b border-gray-200 tracking-widest">{i18n.form.filter}</h2>
+            <div className="pt-0 pr-4 pl-4 border-b border-gray-200">
+                <h3 className="font-montserrat font-light mt-4 text-sm tracking-wider">{i18n.form.release_date}</h3>
                 <div className="pt-0 pr-4 pb-3 pl-4 flex justify-center items-center mt-3">
-                    <p className="mr-3">{i18n.form.du}</p>
-                    <input type="date" name="fromDate" />
+                    <p className="mr-3 font-light w-16">{i18n.form.from}</p>
+                    <input type="date" name="fromDate" className="w-full font-light border border-gray-200 pr-1 pt-1 pb-1 pl-2 rounded-md focus:boder-sky-500"/>
                 </div>
                 <div className="pt-0 pr-4 pb-3 pl-4 flex justify-center items-center mt-3">
-                    <p className="mr-3">{i18n.form.at}</p>
-                    <input type="date" name="toDate" defaultValue={new Date().toISOString().substring(0, 10)} />
+                    <p className="mr-3 font-light w-16">{i18n.form.to}</p>
+                    <input type="date" name="toDate" className="w-full font-light border border-gray-200 pr-1 pt-1 pb-1 pl-2 rounded-md focus:boder-sky-500" defaultValue={new Date().toISOString().substring(0, 10)} />
                 </div>
             </div>
             <div className="pt-0 pr-4 pb-3 pl-4">
-                <h3 className="font-montserrat font-light mt-4 text-sm">{i18n.form.sort_by}</h3>
-                <select name="sort">
+                <h3 className="font-montserrat font-light mt-4 text-sm tracking-wider">{i18n.form.sort_by}</h3>
+                <select name="sort" className="mt-4 w-full p-2">
                     <option value="popularity.desc">{i18n.form.popularity}</option>
-                    <option value="vote_average.desc">{i18n.form.note}</option>
-                    <option value="cote_count.desc">{i18n.form.number_of_notes}</option>
+                    <option value="vote_average.desc">{i18n.form.rating}</option>
+                    <option value="cote_count.desc">{i18n.form.number_of_ratings}</option>
                 </select>
             </div>
-            <input type="submit" value="Rechercher" className="border border-black cursor-pointer p-1.5 w-full" />
+            <input type="submit" value="Rechercher" className="cursor-pointer tracking-wider p-1.5 w-full bg-gray-100 hover:bg-sky-600 hover:text-white transition duration-200 ease-in-out mt-2" />
         </form>
     );
 }

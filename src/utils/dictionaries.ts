@@ -14,12 +14,12 @@ interface SimpleEntry {
 interface FormEntry {
     filter: string;
     release_date: string;
-    du: string;
-    at: string;
+    from: string;
+    to: string;
     sort_by: string;
     popularity: string;
-    note: string;
-    number_of_notes: string;
+    rating: string;
+    number_of_ratings: string;
 }
 
 export default interface Dictionary {

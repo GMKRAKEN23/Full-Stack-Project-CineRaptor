@@ -29,12 +29,13 @@ export default async function SearchResults({ searchParams, genreId, locale}: Se
     ]);
 
     return (
-        <div className="flex flex-wrap gap-8">
+        <div className="flex flex-wrap gap-8 justify-center sm:justify-normal">
             {results
                 .filter((movie) => movie.poster_path)
                 .map((movie) => (
                     <div
                         key={movie.id} 
+                        className="flex justify-center"
                     > 
                     <MediaCard media={movie} locale={locale} />
                     </div>

@@ -31,8 +31,8 @@ export default function SearchSideBar({genres, locale} : SearchSideBarProps){
     const title = getSideBarTitle();
     return(
         <>
-        <div className="m-4">
-            <h1 className="text-lg text-red-500 font-semibold mb-5">Tous les &quot;{title}&quot;</h1>
+        <div className="mx-4 mb-4 flex flex-col sm:justify-normal sm:items-start justify-center items-center">
+            <h1 className="text-xl text-sky-500 font-semibold mb-5">Tous les &quot;{title}&quot;</h1>
             <Form locale={locale as "en" | "fr"}/>
         </div>
         </>

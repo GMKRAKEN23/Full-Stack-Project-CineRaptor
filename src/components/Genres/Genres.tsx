@@ -23,7 +23,6 @@ export default async function Genres({ locale }: GenresProps) {
                 {i18n.genre.title}
             </h2>
             
-            {/* Responsive grid layout */}
             <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {genres.map((genre) => (
                     <div key={genre.id} className="py-1 bg-sky-600 text-black text-center text-sm font-semibold rounded-md">
