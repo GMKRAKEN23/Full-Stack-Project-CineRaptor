@@ -17,10 +17,10 @@ interface Media {
 
 export default function MediaCard({ media, locale }: MediaCardProps) {
   return (
-    <div className="shadow-lg rounded-lg w-60 md:w-48 z-0 flex flex-col">
+    <div className="shadow-lg rounded-lg w-60 md:w-48 z-0 flex flex-col relative">
       <Link href={`/${locale}/movies/${media.id}`}>
-        <div className="w-full h-64 relative">
-          <Like mediaId={media.id} />
+        <Like mediaId={media.id} />
+        <div className="w-full aspect-[3/4] overflow-hidden relative">
           <Image
             src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${media.poster_path}`}
             alt={media.title}
@@ -34,7 +34,9 @@ export default function MediaCard({ media, locale }: MediaCardProps) {
           <p className="w-8 h-8 absolute border border-black -top-4 rounded-full z-10 bg-white flex justify-center items-center">
             {media.vote_average.toFixed(1)}
           </p>
-          <h3 className="font-semibold my-2 text-base">{media.title}</h3>
+          <h3 className="font-semibold my-2 text-base truncate max-h-10 overflow-hidden">
+            {media.title}
+          </h3>
         </div>
         <p className="text-xs ">
           Le {new Date(media.release_date).toLocaleDateString("fr-FR")}

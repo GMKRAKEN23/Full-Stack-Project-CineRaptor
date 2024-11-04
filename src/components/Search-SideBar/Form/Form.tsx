@@ -44,7 +44,7 @@ export default function Form({ locale }: FormProps) {
     if (!i18n) return <p>Chargement...</p>;
 
     return (
-        <form onSubmit={handleSubmit} className="shadow-lg max-w-72">
+        <form onSubmit={handleSubmit} className="shadow-lg">
             <h2 className="text-black text-lg py-2.5 px-4 m-0 border-b border-black">{i18n.form.filter}</h2>
             <div className="pt-0 pr-4 pb-3 pl-4">
                 <h3 className="font-montserrat font-light mt-4 text-sm">{i18n.form.release_date}</h3>
