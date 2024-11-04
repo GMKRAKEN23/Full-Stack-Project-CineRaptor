@@ -34,9 +34,7 @@ export default async function Header({ locale }: PopularProps) {
                       C
                     </span>
                     ine
-                    <span className="uppercase font-bold text-sky-500 ">
-                      r
-                    </span>
+                    <span className="uppercase font-bold text-sky-500 ">r</span>
                     aptor
                   </h1>
                 </div>
@@ -55,7 +53,7 @@ export default async function Header({ locale }: PopularProps) {
           </div>
           <div className="relative z-10 flex items-center lg:hidden">
             {/* Mobile menu button */}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open menu</span>
               <Bars3Icon
@@ -70,7 +68,7 @@ export default async function Header({ locale }: PopularProps) {
           </div>
           <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
             <Link href={`/${locale}/signup`}>
-              <p className="ml-4">{i18n.header.login}</p>
+              <p className="ml-4 tracking-wider text-gray-900">{i18n.header.login}</p>
             </Link>
             <Link href={`/${locale}/user/profile`}>
               <FaUser
@@ -96,13 +94,22 @@ export default async function Header({ locale }: PopularProps) {
       <DisclosurePanel as="nav" aria-label="Global" className="lg:hidden">
         <div className="border-t border-gray-200 pb-3 pt-4">
           <div className="flex items-center px-4">
-            <div className="ml-3">
-              <Link href={`/${locale}/user/profile`}>
-                <FaUser aria-hidden="true" className="h-6 w-6" />
-              </Link>
+            <div className="ml-3 space-y-2 w-full">
+              <div className="hover:bg-gray-100 w-full py-1.5">
+                <Link href={`/${locale}/signup`}>
+                  <p className="tracking-wider pl-2 text-gray-900">{i18n.header.login}</p>
+                </Link>
+              </div>
+              <div className="hover:bg-gray-100 w-full py-1.5">
+                <Link href={`/${locale}/user/profile`}>
+                  <FaUser aria-hidden="true" className="h-6 w-6 text-sky-500 pl-2" />
+                </Link>
+              </div>
+              <div className="hover:bg-gray-100 w-full py-1.5 pl-2">
+                <LanguageSelector />
+              </div>
             </div>
           </div>
-          <div className="mt-3 space-y-1 px-2">{/* add FR*/}</div>
         </div>
       </DisclosurePanel>
     </Disclosure>
