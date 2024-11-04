@@ -1,49 +1,46 @@
-// pages/api/auth/[...nextauth].ts
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { getDictionary } from "@/utils/dictionaries";
-import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "@/utils/prisma";
+import * as bcrypt from "bcrypt";
 
-interface LocaleContext extends NextApiRequest {
-  locale: 'en' | 'fr'; 
-}
+export default NextAuth({
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      authorize: async (credentials) => {
+        const user = await prisma.user.findFirst({
+          where: { email: credentials?.email },
+        });
 
-const handler = async (req: LocaleContext, res: NextApiResponse) => {
-  const locale = req.headers["accept-language"]?.startsWith("fr") ? "fr" : "en";
-  const dictionary = await getDictionary(locale);
-
-  return NextAuth(req, res, {
-    providers: [
-      CredentialsProvider({
-        name: dictionary.login.title,
-        credentials: {
-          email: {
-            label: dictionary.login.emailPlaceholder,
-            type: "text",
-            placeholder: dictionary.login.emailPlaceholder,
-          },
-          password: {
-            label: dictionary.login.passwordLabel,
-            type: "password",
-            placeholder: dictionary.login.passwordPlaceholder,
-          },
-        },
-        async authorize(credentials) {
-          const response = await fetch("http://localhost:3000/api/login", {
-            method: "POST",
-            body: JSON.stringify({
-              email: credentials?.email,
-              password: credentials?.password,
-            }),
-          });
-
-          const user = await response.json();
-
-          return user || null;
-        },
-      }),
-    ],
-  });
-};
-
-export { handler as GET, handler as POST };
+        if (user && (await bcrypt.compare(credentials?.password, user.password))) {
+          const { password, ...userWithoutPassword } = user;
+          return userWithoutPassword;
+        }
+        return null;
+      },
+    }),
+  ],
+  session: { strategy: "jwt" },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user = { id: token.id, email: token.email };
+      }
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/auth/signin", // votre page de connexion personnalisée
+  },
+});

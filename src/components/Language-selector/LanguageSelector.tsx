@@ -13,7 +13,7 @@ export default function LanguageSelector() {
         setIsOpen(false);
     }, [currentLanguage]);
 
-    const handleLanguageChange = (locale) => {
+    const handleLanguageChange = (locale: string) => {
         setIsOpen(false);
         window.location.href = `/${locale}`;
     };
@@ -46,7 +46,7 @@ export default function LanguageSelector() {
             <div className="lg:hidden flex items-center">
                 <span
                     className={`cursor-pointer px-2 py-1 uppercase bg-sky-300`}
-                    onClick={() => handleLanguageChange(currentLanguage)} 
+                    onClick={() => handleLanguageChange(currentLanguage as string)} 
                 >
                     {currentLanguage === "fr" ? "FR" : "EN"} 
                 </span>

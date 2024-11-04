@@ -70,7 +70,7 @@ export default async function Header({ locale }: PopularProps) {
             <Link href={`/${locale}/signup`}>
               <p className="ml-4 tracking-wider text-gray-900">{i18n.header.login}</p>
             </Link>
-            <Link href={`/${locale}/user/profile`}>
+            <Link href={`/${locale}/auth/signin`}>
               <FaUser
                 aria-hidden="true"
                 className="ml-4 h-5 w-5 text-sky-500"
@@ -101,7 +101,7 @@ export default async function Header({ locale }: PopularProps) {
                 </Link>
               </div>
               <div className="hover:bg-gray-100 w-full py-1.5">
-                <Link href={`/${locale}/user/profile`}>
+                <Link href={`/${locale}/auth/signin`}>
                   <FaUser aria-hidden="true" className="h-6 w-6 text-sky-500 pl-2" />
                 </Link>
               </div>
