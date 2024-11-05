@@ -58,7 +58,7 @@ const ProfilePage = async ({ params }: ProfilePageParams) => {
         <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">{i18n.profilPage.title}</h2>
         <LogoutButton locale={params.locale}/>
       </div>
-      <div className="flex gap-10 px-16 flex-wrap md:justify-start justify-center"> 
+      <div className="flex gap-10 px-16 pb-8 flex-wrap md:justify-start justify-center"> 
         {movies.map((movie) => (
           <MediaCard media={movie} locale={params.locale} key={movie.id} />
         ))}
