@@ -33,9 +33,11 @@ export default function RootLayout({
         className={`${roboto.variable} ${montserrat.variable} antialiased bg-neutral-200`}
       >
         <Header locale={locale} />
+        <AuthProvider>
         <main>
-          <AuthProvider>{children}</AuthProvider>
+          {children}
         </main>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -68,9 +68,9 @@ export default async function Header({ locale }: PopularProps) {
           </div>
           <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
             <Link href={`/${locale}/signup`}>
-              <p className="ml-4 tracking-wider text-gray-900">{i18n.header.login}</p>
+              <p className="ml-4 tracking-wider text-gray-900">{i18n.signup.title}</p>
             </Link>
-            <Link href={`/${locale}/auth/signin`}>
+            <Link href={`/${locale}/user/profile`}>
               <FaUser
                 aria-hidden="true"
                 className="ml-4 h-5 w-5 text-sky-500"
@@ -97,11 +97,11 @@ export default async function Header({ locale }: PopularProps) {
             <div className="ml-3 space-y-2 w-full">
               <div className="hover:bg-gray-100 w-full py-1.5">
                 <Link href={`/${locale}/signup`}>
-                  <p className="tracking-wider pl-2 text-gray-900">{i18n.header.login}</p>
+                  <p className="tracking-wider pl-2 text-gray-900">{i18n.signup.title}</p>
                 </Link>
               </div>
               <div className="hover:bg-gray-100 w-full py-1.5">
-                <Link href={`/${locale}/auth/signin`}>
+                <Link href={`/${locale}/user/profile`}>
                   <FaUser aria-hidden="true" className="h-6 w-6 text-sky-500 pl-2" />
                 </Link>
               </div>

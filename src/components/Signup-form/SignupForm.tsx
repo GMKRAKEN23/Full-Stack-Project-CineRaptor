@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { useSession, signIn} from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getDictionary } from "@/utils/dictionaries";
@@ -14,31 +14,47 @@ interface SignupProps {
 
 export default function SignupForm({locale} : SignupProps) {
 
-  const { status } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.push("/user/profile");
-    }
-  }, [status, router]);
-
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    fetch("/api/signup", {
-      method: "POST",
-      body: JSON.stringify({
-        email: formData.get("email"),
-        password: formData.get("password"),
-      }),
-    }).then((response) => {
-      if (response.ok) {
-        signIn();
+   const { status } = useSession();
+    const router = useRouter();
+  
+    useEffect(() => {
+      console.log( status);
+      if (status === "authenticated") {
+        router.push("/user/profile");
       }
-    });
-  };
+    }, [status, router]);
+  
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+    
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.get("email"),
+          password: formData.get("password"),
+        }),
+      });
+    
+      if (response.ok) {
+        const result = await signIn("credentials", {
+          redirect: false, 
+          email: formData.get("email"),
+          password: formData.get("password"),
+        });
+    
+        if (result?.ok) {
+          router.push("/user/profile");
+        } else {
+          console.error("Erreur lors de l'authentification après l'inscription");
+        }
+      } else {
+        console.error("Erreur lors de l'inscription");
+      }
+    };
 
+    
   const [i18n, setI18n] = useState<Dictionary | null>(null);
 
   useEffect(() => {

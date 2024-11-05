@@ -15,8 +15,7 @@ export default function Like({ mediaId }: LikeProps) {
     if (!session) {
       signIn();
     }
-
-    fetch(`api/like/${mediaId}`, {
+    fetch(`/api/like/${mediaId}`, {
       method: "POST",
     });
   };

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Logo from "@/styles/logo.svg";
+import Logo from "../../../public/styles/logo.svg";
 
 
 interface LogoSVGProps {
