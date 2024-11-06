@@ -6,10 +6,9 @@ interface MoviePageProps {
         locale: "en" | "fr"; 
     };
     searchParams: Record<string, string | undefined>;
-    isLiked: boolean;
 }
 
-export default function MoviesPage({ params, searchParams, isLiked}: MoviePageProps) {
+export default function MoviesPage({ params, searchParams}: MoviePageProps) {
     const { id: genreId, locale } = params;
 
     return (
@@ -17,7 +16,6 @@ export default function MoviesPage({ params, searchParams, isLiked}: MoviePagePr
             searchParams={searchParams} 
             locale={locale} 
             genreId={genreId} 
-            isLiked={isLiked} 
         />
     );
 }

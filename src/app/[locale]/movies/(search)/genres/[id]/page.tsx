@@ -1,4 +1,3 @@
-import React from "react";
 import SearchResults from "../../SearchResults";
 
 interface GenreIdPageProps {
@@ -6,11 +5,10 @@ interface GenreIdPageProps {
     id: string;
     locale: "en" | "fr";
   };
-  isLiked: boolean;
   searchParams: Record<string, string | undefined>;
 }
 
-export default function GenreIdPage({ params, searchParams, isLiked}: GenreIdPageProps) {
+export default function GenreIdPage({ params, searchParams}: GenreIdPageProps) {
   const { id, locale } = params;
 
   console.log("Genre ID:", id);
@@ -32,7 +30,6 @@ export default function GenreIdPage({ params, searchParams, isLiked}: GenreIdPag
       searchParams={searchParams}
       genreId={id}
       locale={locale}
-      isLiked={isLiked}
     />
   );
 }
