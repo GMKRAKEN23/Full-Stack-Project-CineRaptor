@@ -4,16 +4,16 @@ import SearchResults from "../../SearchResults";
 interface GenreIdPageProps {
   params: Promise<{ id: string; locale: "en" | "fr"; }>;  
   searchParams: Promise<Record<string, string | undefined>>; 
-  isLiked: boolean;
 }
 
 export default async function GenreIdPage({
   params,
   searchParams,
-  isLiked
 }: GenreIdPageProps) {
   const { id, locale} = await params;  
   const resolvedSearchParams = await searchParams; 
+  
+  const isLiked = false;
 
   console.log("Genre ID:", id);
   console.log("Locale:", locale);
