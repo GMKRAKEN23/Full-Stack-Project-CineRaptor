@@ -4,6 +4,7 @@ import MediaCard from "../MediaCard/MediaCard";
 interface SimilarMoviesProps{
     locale: string,
     movieId: number;
+    isLiked: boolean;
 }
 
 interface Movie{
@@ -14,7 +15,7 @@ interface Movie{
     release_date: string,
 }
 
-export default async function SimilarMovies({movieId, locale} : SimilarMoviesProps){
+export default async function SimilarMovies({movieId, locale, isLiked} : SimilarMoviesProps){
     const { results } = await getMovieByPath(`/movie/${movieId}/similar`, [], locale)
     return(
         <div className="flex justify-center">

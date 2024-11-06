@@ -5,7 +5,8 @@ import Image from "next/image";
 
 interface MovieSearchResultsProps{
     movieResults: Movie[];
-    locale?: string;
+    locale: "en" | "fr";
+    onResultClick: () => void; 
 }
 
 interface Movie{
