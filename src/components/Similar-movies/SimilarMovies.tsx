@@ -1,5 +1,5 @@
 import { getMovieByPath } from "@/utils/movieClient";
-import MediaCard from "../Media-card/MediaCard";
+import MediaCard from "../MediaCard/MediaCard";
 
 interface SimilarMoviesProps{
     locale: string,

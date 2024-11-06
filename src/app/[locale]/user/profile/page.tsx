@@ -2,7 +2,7 @@ import LogoutButton from "@/components/Logout-button/Logout-button";
 import { getServerSession } from "next-auth";
 import prisma from "@/utils/prisma";
 import { getHydrateMovies } from "@/utils/movieClient";
-import MediaCard from "@/components/Media-card/MediaCard";
+import MediaCard from "@/components/MediaCard/MediaCard";
 import { Session } from "next-auth"; 
 import { getDictionary } from "@/utils/dictionaries";
 

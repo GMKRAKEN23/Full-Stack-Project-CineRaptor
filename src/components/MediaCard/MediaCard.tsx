@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Like from "@/components/Media-card/Like/Like";
+import Like from "@/components/MediaCard/Like/Like";
 
 interface MediaCardProps {
   locale: string;
