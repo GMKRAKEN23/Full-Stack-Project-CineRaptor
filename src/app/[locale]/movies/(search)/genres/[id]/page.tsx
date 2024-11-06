@@ -1,20 +1,16 @@
 import React from "react";
 import SearchResults from "../../SearchResults";
 
-interface GenreIdPageProps extends LikeToggleProps {
-    params: {
-        id: string;
-        locale: "en" | "fr"; 
-    };
-    searchParams: Record<string, string | undefined>;
+interface GenreIdPageProps {
+  params: {
+    id: string;
+    locale: "en" | "fr";
+  };
+  isLiked: boolean;
+  searchParams: Record<string, string | undefined>;
 }
 
-interface LikeToggleProps {
-    isLiked: boolean;
-    onLikeToggle: () => void;
-}
-
-export default function GenreIdPage({ params, searchParams, isLiked, onLikeToggle}: GenreIdPageProps) {
+export default function GenreIdPage({ params, searchParams, isLiked}: GenreIdPageProps) {
   const { id, locale } = params;
 
   console.log("Genre ID:", id);
@@ -37,7 +33,6 @@ export default function GenreIdPage({ params, searchParams, isLiked, onLikeToggl
       genreId={id}
       locale={locale}
       isLiked={isLiked}
-      onLikeToggle={onLikeToggle}
     />
   );
 }

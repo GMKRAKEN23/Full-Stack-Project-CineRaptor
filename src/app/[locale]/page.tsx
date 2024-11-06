@@ -7,14 +7,13 @@ interface HomeProps{
   params: {
     locale: "en" | "fr"; 
     isLiked: boolean;
-     onLikeToggle: () => void; 
   }
 }
 
-export default function Home({params: {locale, isLiked, onLikeToggle}}: HomeProps) {
+export default function Home({params: {locale, isLiked}}: HomeProps) {
   return (
     <div className="m-6 px-10">
-    < Popular locale={locale}  isLiked={isLiked} onLikeToggle={onLikeToggle}
+    < Popular locale={locale}  isLiked={isLiked}
     />
     < Genres locale={locale} />
     </div>
