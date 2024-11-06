@@ -8,6 +8,7 @@ interface MediaCardProps {
   locale: string;
   media: Media;
   forceRed?: boolean;
+  isLiked: boolean;  
 }
 
 interface Media {
