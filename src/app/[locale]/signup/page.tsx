@@ -2,7 +2,7 @@ import SignupForm from "@/components/Signup-form/SignupForm";
 
 interface SignupProps {
   params: {
-    locale: "en" | "fr";  L
+    locale: "en" | "fr"; 
   };
 }
 
