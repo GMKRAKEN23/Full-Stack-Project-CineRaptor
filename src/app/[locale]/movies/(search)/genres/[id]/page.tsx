@@ -10,7 +10,7 @@ interface GenreIdPageProps {
   searchParams: Record<string, string | undefined>;
 }
 
-const GenreIdPage: React.FC<GenreIdPageProps> = ({ params, searchParams, isLiked }) => {
+export default function GenreIdPage({ params, searchParams, isLiked}: GenreIdPageProps) {
   const { id, locale } = params;
 
   console.log("Genre ID:", id);
@@ -36,5 +36,3 @@ const GenreIdPage: React.FC<GenreIdPageProps> = ({ params, searchParams, isLiked
     />
   );
 }
-
-export default GenreIdPage
