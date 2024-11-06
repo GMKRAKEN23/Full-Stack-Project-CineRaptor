@@ -8,7 +8,6 @@ interface HomeProps {
 }
 
 export default async function Home({ params }: HomeProps) {
-  // Résoudre la promesse pour récupérer les valeurs de params
   const { locale} = await params;
 
   const isLiked = false;
