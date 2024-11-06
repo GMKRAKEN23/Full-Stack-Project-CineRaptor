@@ -24,22 +24,27 @@ interface CustomSession extends Session {
 }
 
 interface ProfilePageParams {
-  params: Promise<{
+  params: {
     locale: "en" | "fr"; 
-  }>;
+  };
   isLiked: boolean;
 }
 
 const ProfilePage = async ({ params }: ProfilePageParams) => {
-  const { locale } = await params;
+  // Nous avons maintenant les paramètres directement sans promesse
+  const { locale } = params; 
+
+  // Appel pour charger le dictionnaire
   const i18n = await getDictionary(locale);
   
+  // Vérification de la session utilisateur
   const session: CustomSession | null = await getServerSession();
-
+  
   if (!session || !session.user) {
     return <div>Please log in to view your profile.</div>;
   }
 
+  // Récupération des informations de l'utilisateur depuis la base de données
   const user: UserWithLikes | null = await prisma.user.findFirst({
     where: { email: session.user.email },
     include: {
@@ -47,17 +52,22 @@ const ProfilePage = async ({ params }: ProfilePageParams) => {
     },
   });
 
+  // Vérification si l'utilisateur existe
   if (!user) {
     return <div>User not found.</div>;
   }
 
+  // Récupération des films aimés par l'utilisateur
   const movieIds = user.movieLikes.map((like) => like.movieId);
   const movies = await getHydrateMovies(movieIds);
 
+  // Affichage des informations et des films
   return (
     <div>
       <div className="flex mx-6 mt-6 mb-4 px-10 flex-col sm:flex-row sm:justify-between items-center">
-        <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">{i18n.profilPage.title}</h2>
+        <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">
+          {i18n.profilPage.title}
+        </h2>
         <LogoutButton locale={locale} />
       </div>
       <div className="flex gap-10 px-16 pb-8 flex-wrap md:justify-start justify-center">
