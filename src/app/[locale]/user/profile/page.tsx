@@ -23,29 +23,23 @@ interface CustomSession extends Session {
   };
 }
 
-// Définir les paramètres du composant directement sans les exporter comme type
-interface ProfilePageProps {
-  params: {
+interface ProfilePageParams {
+  params: Promise<{
     locale: "en" | "fr"; 
-  };
-  isLiked: boolean;
+  }>;
+  
 }
 
-const ProfilePage = async ({ params }: ProfilePageProps) => {
-  // Extraction du paramètre locale
-  const { locale } = params;
-
-  // Chargement du dictionnaire pour le locale
+const ProfilePage = async ({ params }: ProfilePageParams) => {
+  const { locale } = await params;
   const i18n = await getDictionary(locale);
   
-  // Vérification de la session utilisateur
   const session: CustomSession | null = await getServerSession();
-  
+
   if (!session || !session.user) {
     return <div>Please log in to view your profile.</div>;
   }
 
-  // Récupérer l'utilisateur et ses films aimés
   const user: UserWithLikes | null = await prisma.user.findFirst({
     where: { email: session.user.email },
     include: {
@@ -57,17 +51,13 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
     return <div>User not found.</div>;
   }
 
-  // Récupérer les films aimés par l'utilisateur
   const movieIds = user.movieLikes.map((like) => like.movieId);
   const movies = await getHydrateMovies(movieIds);
 
-  // Rendu des informations de l'utilisateur et des films
   return (
     <div>
       <div className="flex mx-6 mt-6 mb-4 px-10 flex-col sm:flex-row sm:justify-between items-center">
-        <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">
-          {i18n.profilPage.title}
-        </h2>
+        <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">{i18n.profilPage.title}</h2>
         <LogoutButton locale={locale} />
       </div>
       <div className="flex gap-10 px-16 pb-8 flex-wrap md:justify-start justify-center">
