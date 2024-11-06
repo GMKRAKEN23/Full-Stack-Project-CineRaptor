@@ -60,7 +60,13 @@ const ProfilePage = async ({ params }: ProfilePageParams) => {
       </div>
       <div className="flex gap-10 px-16 pb-8 flex-wrap md:justify-start justify-center"> 
         {movies.map((movie) => (
-          <MediaCard media={movie} locale={params.locale} key={movie.id} />
+          <MediaCard
+            media={movie}
+            locale={params.locale}
+            key={movie.id}
+            isLiked={user.movieLikes.some((like) => like.movieId === movie.id)} 
+            forceRed={true}
+          />
         ))}
       </div>
     </div>
