@@ -2,22 +2,21 @@ import React from "react";
 import SearchResults from "../../SearchResults";
 
 interface GenreIdPageProps {
-  params: Promise<{ id: string; locale: "en" | "fr" }>;  // params est maintenant une promesse
-  searchParams: Promise<Record<string, string | undefined>>;  // searchParams est également une promesse
+  params: Promise<{ id: string; locale: "en" | "fr" }>;  
+  searchParams: Promise<Record<string, string | undefined>>;  
 }
 
 export default async function GenreIdPage({
   params,
   searchParams,
 }: GenreIdPageProps) {
-  const { id, locale } = await params;  // Attente de la résolution de params
-  const resolvedSearchParams = await searchParams;  // Attente de la résolution de searchParams
+  const { id, locale } = await params;  
+  const resolvedSearchParams = await searchParams; 
 
   console.log("Genre ID:", id);
   console.log("Locale:", locale);
   console.log("Search Params:", resolvedSearchParams);
 
-  // Validation des valeurs attendues
   if (!locale) {
     console.error("Locale is missing.");
     return <div>Error: Locale is missing..</div>;

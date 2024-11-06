@@ -1,21 +1,23 @@
 import SearchSideBar from "@/components/Search-SideBar/SearchSideBar";
 import { getMovieByPath } from "@/utils/movieClient";
 
-interface MovieSearchLayoutProps{
+interface MovieSearchLayoutProps {
     children: React.ReactNode;
-    params: {
-        locale: string;
-    }
+    params: Promise<{ locale: string }>;  
 }
 
-export default async function MovieSearchLayout({children,  params: { locale }}: MovieSearchLayoutProps){
+export default async function MovieSearchLayout({
+    children,
+    params,
+}: MovieSearchLayoutProps) {
+    const { locale } = await params;
 
-    const {genres} = await getMovieByPath("/genre/movie/list", [], locale);
+    const { genres } = await getMovieByPath("/genre/movie/list", [], locale);
 
-    return(
+    return (
         <div className="flex ml-8 mt-8 flex-col lg:flex-row">
-        <SearchSideBar genres={genres} locale={locale}/>
-        <div className="flex my-4 flex-wrap">{children}</div>
+            <SearchSideBar genres={genres} locale={locale} />
+            <div className="flex my-4 flex-wrap">{children}</div>
         </div>
-    )
+    );
 }

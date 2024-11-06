@@ -1,21 +1,24 @@
 import SearchResults from "./SearchResults";
 
 interface MoviePageProps {
-    params: {
+    params: Promise<{
         id: string;
-        locale: "en" | "fr"; 
-    };
+        locale: "en" | "fr";
+    }>;
     searchParams: Record<string, string | undefined>;
 }
 
-export default function MoviesPage({ params, searchParams}: MoviePageProps) {
-    const { id: genreId, locale } = params;
+export default async function MoviesPage({
+    params,
+    searchParams,
+}: MoviePageProps) {
+    const { id: genreId, locale } = await params;
 
     return (
-        <SearchResults 
-            searchParams={searchParams} 
-            locale={locale} 
-            genreId={genreId} 
+        <SearchResults
+            searchParams={searchParams}
+            locale={locale}
+            genreId={genreId}
         />
     );
 }
