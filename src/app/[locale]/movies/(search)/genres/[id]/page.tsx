@@ -2,20 +2,18 @@ import React from "react";
 import SearchResults from "../../SearchResults";
 
 interface GenreIdPageProps {
-  searchParams: Record<string, string | undefined>;
-  id: string;
-  locale: "en" | "fr";
+  params: {
+    id: string;
+    locale: "en" | "fr";
+  };
   isLiked: boolean;
   onLikeToggle: () => void;
+  searchParams: Record<string, string | undefined>;
 }
 
-export default function GenreIdPage({
-  searchParams,
-  isLiked,
-  locale,
-  id,
-  onLikeToggle,
-}: GenreIdPageProps) {
+export default function GenreIdPage({ params, searchParams, isLiked, onLikeToggle}: GenreIdPageProps) {
+  const { id, locale } = params;
+
   console.log("Genre ID:", id);
   console.log("Locale:", locale);
   console.log("Search Params:", searchParams);
