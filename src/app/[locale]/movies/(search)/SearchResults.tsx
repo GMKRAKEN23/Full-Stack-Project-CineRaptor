@@ -1,10 +1,13 @@
 import { getMovieByPath } from "@/utils/movieClient";
 import MediaCard from "@/components/Media-card/MediaCard";
 
+
 interface SearchResultsProps {
     searchParams: Record<string, string | undefined>;
     genreId: string;
-    locale: string;
+    locale: "en" | "fr";
+    isLiked: boolean;
+    onLikeToggle: () => void; 
 }
 
 interface Movie {
@@ -19,7 +22,7 @@ interface MovieResponse {
     results: Movie[];
 }
 
-export default async function SearchResults({ searchParams, genreId, locale}: SearchResultsProps) {
+export default async function SearchResults({ searchParams, genreId, locale, isLiked, onLikeToggle}: SearchResultsProps) {
 
     const { results }: MovieResponse = await getMovieByPath("/discover/movie", [
         { key: "sort_by", value: searchParams.sort_by || "popularity.desc" },
@@ -37,7 +40,7 @@ export default async function SearchResults({ searchParams, genreId, locale}: Se
                         key={movie.id} 
                         className="flex justify-center"
                     > 
-                    <MediaCard media={movie} locale={locale} />
+                    <MediaCard media={movie} locale={locale} isLiked={isLiked} onLikeToggle={onLikeToggle}/>
                     </div>
                 ))}
         </div>

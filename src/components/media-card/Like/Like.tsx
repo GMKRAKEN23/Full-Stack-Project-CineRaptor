@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 type LikeProps = {
   mediaId: string;
   isLiked: boolean; 
+  onLikeToggle: () => void; 
   forceRed?: boolean;
 };
 

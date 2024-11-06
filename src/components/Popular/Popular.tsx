@@ -4,6 +4,8 @@ import { getDictionary } from "@/utils/dictionaries";
 
 interface PopularProps {
     locale: "en" | "fr";
+    isLiked: boolean;
+    onLikeToggle: () => void; 
   }
 
 interface Movie{
@@ -14,7 +16,7 @@ interface Movie{
     release_date: string;
 }
 
-export default async function Popular({locale} : PopularProps){
+export default async function Popular({locale, isLiked, onLikeToggle} : PopularProps){
     const { results } = await getMovieByPath("/movie/popular", [], locale)
     const popularMovies = results.slice( 0, 6);
     const i18n = await getDictionary(locale);
@@ -24,7 +26,7 @@ export default async function Popular({locale} : PopularProps){
             <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">{i18n.popular.title}</h2>
             <div className="flex gap-10 flex-wrap md:justify-start justify-center">
                 {popularMovies.map((movie: Movie) => (
-                    <MediaCard key={movie.id} media={movie} locale={locale}/>
+                    <MediaCard key={movie.id} media={movie} locale={locale} isLiked={isLiked} onLikeToggle={onLikeToggle}/>
                 ))}
             </div>
         </div>
