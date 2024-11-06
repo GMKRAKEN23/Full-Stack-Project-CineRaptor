@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import prisma from "@/utils/prisma";
 import { getHydrateMovies } from "@/utils/movieClient";
 import MediaCard from "@/components/MediaCard/MediaCard";
-import { Session } from "next-auth"; 
+import { Session } from "next-auth";
 import { getDictionary } from "@/utils/dictionaries";
 
 interface UserLikes {
@@ -24,15 +24,16 @@ interface CustomSession extends Session {
 }
 
 interface ProfilePageParams {
-    params: {
-        locale: "en" | "fr"; 
-    };
-    isLiked: boolean;
+  params: Promise<{
+    locale: "en" | "fr";  // Locale as a promise
+  }>;
+  isLiked: boolean;
 }
 
-const ProfilePage = async ({ params}: ProfilePageParams) => {
-
-  const i18n = await getDictionary(params.locale);
+const ProfilePage = async ({ params }: ProfilePageParams) => {
+  const { locale } = await params; // Resolve params promise
+  const i18n = await getDictionary(locale);
+  
   const session: CustomSession | null = await getServerSession();
 
   if (!session || !session.user) {
@@ -57,15 +58,15 @@ const ProfilePage = async ({ params}: ProfilePageParams) => {
     <div>
       <div className="flex mx-6 mt-6 mb-4 px-10 flex-col sm:flex-row sm:justify-between items-center">
         <h2 className="font-semibold text-lg font-montserrat my-4 text-center md:text-start tracking-wider">{i18n.profilPage.title}</h2>
-        <LogoutButton locale={params.locale}/>
+        <LogoutButton locale={locale} />
       </div>
-      <div className="flex gap-10 px-16 pb-8 flex-wrap md:justify-start justify-center"> 
+      <div className="flex gap-10 px-16 pb-8 flex-wrap md:justify-start justify-center">
         {movies.map((movie) => (
           <MediaCard
             media={movie}
-            locale={params.locale}
+            locale={locale}
             key={movie.id}
-            isLiked={user.movieLikes.some((like) => like.movieId === movie.id)} 
+            isLiked={user.movieLikes.some((like) => like.movieId === movie.id)}
             forceRed={true}
           />
         ))}

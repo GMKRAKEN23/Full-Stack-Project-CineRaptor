@@ -12,7 +12,6 @@ export default async function MoviesPage({
   params,
   searchParams,
 }: MoviePageProps) {
-  // Résoudre les promesses pour récupérer les données
   const { id: genreId, locale } = await params;
   const resolvedSearchParams = await searchParams;
 
