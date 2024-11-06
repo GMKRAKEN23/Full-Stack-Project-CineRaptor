@@ -2,17 +2,24 @@ import SearchResults from "./SearchResults";
 
 interface GenreIdPageProps {
     params: {
-        id: string; 
+        id: string;
+        locale: "en" | "fr"; 
     };
     searchParams: Record<string, string | undefined>;
-    locale: "en" | "fr"; 
-    genreId: string;
     isLiked: boolean;
     onLikeToggle: () => void; 
-  }
+}
 
-export default function MoviesPage({searchParams, locale, genreId, isLiked, onLikeToggle}: GenreIdPageProps ){
-    return(
-        <SearchResults searchParams={searchParams} locale={locale} genreId={genreId} isLiked={isLiked} onLikeToggle={onLikeToggle}/>
-    )
+export default function MoviesPage({ params, searchParams, isLiked, onLikeToggle }: GenreIdPageProps) {
+    const { id: genreId, locale } = params;
+
+    return (
+        <SearchResults 
+            searchParams={searchParams} 
+            locale={locale} 
+            genreId={genreId} 
+            isLiked={isLiked} 
+            onLikeToggle={onLikeToggle} 
+        />
+    );
 }
