@@ -4,12 +4,14 @@ import SearchResults from "../../SearchResults";
 interface GenreIdPageProps {
   params: {
       id: string;
-      locale: string; 
+      locale: "en" | "fr"; 
   };
+  isLiked: boolean;
+  onLikeToggle: () => void; 
   searchParams: Record<string, string | undefined>; 
 }
 
-export default function GenreIdPage({ params, searchParams }: GenreIdPageProps) {
+export default function GenreIdPage({ params, searchParams, isLiked, onLikeToggle}: GenreIdPageProps) {
   const { id, locale } = params; 
 
   console.log("Genre ID:", id); 
@@ -31,6 +33,7 @@ export default function GenreIdPage({ params, searchParams }: GenreIdPageProps) 
           searchParams={searchParams} 
           genreId={id} 
           locale={locale} 
+          isLiked={isLiked} onLikeToggle={onLikeToggle}
       />
   );
 }
