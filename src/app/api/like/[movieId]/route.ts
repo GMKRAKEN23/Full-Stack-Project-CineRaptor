@@ -3,15 +3,23 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest } from "next/server"; 
 import { NextResponse } from "next/server";
 
-export async function POST(request: NextRequest, { params }: { params: { movieId: string } }) {
+export async function POST(request: NextRequest) {
   const token = await getToken({ req: request });
 
   if (!token) {
     return NextResponse.json({ message: "unauthorized" }, { status: 401 });
   }
 
-  const { movieId } = params; 
+  // Extraire movieId depuis l'URL
+  const pathname = request.nextUrl.pathname;
+  const movieId = pathname.split("/").pop(); // on suppose que le movieId est à la fin de l'URL
 
+  // Vérification que movieId est bien une chaîne valide
+  if (!movieId || typeof movieId !== 'string') {
+    return NextResponse.json({ message: "Invalid movieId" }, { status: 400 });
+  }
+
+  // Vérifier si l'utilisateur a déjà liké ce film
   const existingLike = await prisma.movieLike.findFirst({
     where: {
       movieId: movieId,
@@ -32,7 +40,7 @@ export async function POST(request: NextRequest, { params }: { params: { movieId
   } else {
     user = await prisma.user.update({
       where: {
-        email: token.email as string, 
+        email: token.email as string,
       },
       data: {
         movieLikes: {
