@@ -1,13 +1,13 @@
 import SignupForm from "@/components/Signup-form/SignupForm";
 
 interface SignupProps {
-  params: {
+  params: Promise<{
     locale: "en" | "fr"; 
-  };
+  }>;
 }
 
-export default function SignupPage({ params }: SignupProps) {
-  const { locale } = params;
+export default async function SignupPage({ params }: SignupProps) {
+  const { locale } = await params;
 
   return (
     <SignupForm locale={locale} />
