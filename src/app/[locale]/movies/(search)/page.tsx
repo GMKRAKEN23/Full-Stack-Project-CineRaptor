@@ -1,6 +1,6 @@
 import SearchResults from "./SearchResults";
 
-interface GenreIdPageProps {
+interface MoviePageProps {
     params: {
         id: string;
         locale: "en" | "fr"; 
@@ -10,7 +10,7 @@ interface GenreIdPageProps {
     onLikeToggle: () => void; 
 }
 
-export default function MoviesPage({ params, searchParams, isLiked, onLikeToggle }: GenreIdPageProps) {
+export default function MoviesPage({ params, searchParams, isLiked, onLikeToggle }: MoviePageProps) {
     const { id: genreId, locale } = params;
 
     return (
