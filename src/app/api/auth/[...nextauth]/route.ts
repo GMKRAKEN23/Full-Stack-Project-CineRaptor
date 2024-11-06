@@ -14,7 +14,7 @@ const handler = NextAuth({
         },
       },
       async authorize(credentials) {
-        const response = await fetch("/api/login", {
+        const response = await fetch("https://full-stack-project-cine-raptor.vercel.app/api/login", {
           method: "POST",
           body: JSON.stringify({
             email: credentials?.email,

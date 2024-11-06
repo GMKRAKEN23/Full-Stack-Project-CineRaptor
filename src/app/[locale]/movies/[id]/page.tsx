@@ -15,13 +15,10 @@ interface MoviesIdPageProps {
 }
 
 export default async function MoviesIdPage({ params }: MoviesIdPageProps) {
-    // Résolution de la promesse pour obtenir les valeurs de id et locale
     const { id, locale } = await params;
 
-    // Appel à l'API pour récupérer les informations du film
     const movie = await getMovieByPath(`/movie/${id}`, [], locale);
 
-    // Si le film n'existe pas, afficher une page 404
     if (!movie.original_title) {
         return notFound();
     }
