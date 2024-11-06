@@ -1,5 +1,5 @@
 import { getMovieByPath } from "@/utils/movieClient";
-import MediaCard from "../Media-card/MediaCard";
+import MediaCard from "@/components/Media-card/MediaCard";
 import { getDictionary } from "@/utils/dictionaries";
 
 interface PopularProps {
