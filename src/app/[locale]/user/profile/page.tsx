@@ -23,18 +23,19 @@ interface CustomSession extends Session {
   };
 }
 
-interface ProfilePageParams {
+// Définir les paramètres du composant directement sans les exporter comme type
+interface ProfilePageProps {
   params: {
     locale: "en" | "fr"; 
   };
   isLiked: boolean;
 }
 
-const ProfilePage = async ({ params }: ProfilePageParams) => {
-  // Nous avons maintenant les paramètres directement sans promesse
-  const { locale } = params; 
+const ProfilePage = async ({ params }: ProfilePageProps) => {
+  // Extraction du paramètre locale
+  const { locale } = params;
 
-  // Appel pour charger le dictionnaire
+  // Chargement du dictionnaire pour le locale
   const i18n = await getDictionary(locale);
   
   // Vérification de la session utilisateur
@@ -44,7 +45,7 @@ const ProfilePage = async ({ params }: ProfilePageParams) => {
     return <div>Please log in to view your profile.</div>;
   }
 
-  // Récupération des informations de l'utilisateur depuis la base de données
+  // Récupérer l'utilisateur et ses films aimés
   const user: UserWithLikes | null = await prisma.user.findFirst({
     where: { email: session.user.email },
     include: {
@@ -52,16 +53,15 @@ const ProfilePage = async ({ params }: ProfilePageParams) => {
     },
   });
 
-  // Vérification si l'utilisateur existe
   if (!user) {
     return <div>User not found.</div>;
   }
 
-  // Récupération des films aimés par l'utilisateur
+  // Récupérer les films aimés par l'utilisateur
   const movieIds = user.movieLikes.map((like) => like.movieId);
   const movies = await getHydrateMovies(movieIds);
 
-  // Affichage des informations et des films
+  // Rendu des informations de l'utilisateur et des films
   return (
     <div>
       <div className="flex mx-6 mt-6 mb-4 px-10 flex-col sm:flex-row sm:justify-between items-center">
