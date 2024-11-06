@@ -11,7 +11,7 @@ interface MoviePageProps extends LikeToggleProps {
 interface LikeToggleProps {
     isLiked: boolean;
     onLikeToggle: () => void;
-  }
+}
 
 export default function MoviesPage({ params, searchParams, isLiked, onLikeToggle }: MoviePageProps) {
     const { id: genreId, locale } = params;
