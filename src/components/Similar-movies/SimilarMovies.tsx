@@ -20,7 +20,7 @@ export default async function SimilarMovies({movieId, locale} : SimilarMoviesPro
         <div className="flex justify-center">
             <div className="flex justify-center flex-wrap gap-5 mt-5 mb-8  ">
                 {results.slice(0, 6).map((movie: Movie)=> (
-                    <MediaCard media={movie} key={movie.id} locale={locale}/>
+                    <MediaCard media={movie} key={movie.id} locale={locale} isLiked={isLiked}/>
                 ))}
             </div>
         </div>

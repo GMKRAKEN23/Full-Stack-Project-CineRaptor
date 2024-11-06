@@ -18,12 +18,12 @@ interface Media {
   vote_average: number;
   release_date: string;
 }
-export default function MediaCard({ media, locale, forceRed = false }: MediaCardProps) {
+export default function MediaCard({ media, locale, forceRed = false, isLiked }: MediaCardProps) {
 
   return (
     <div className="shadow-lg rounded-lg w-60 md:w-48 z-0 flex flex-col relative">
       <Link href={`/${locale}/movies/${media.id}`}>
-        <Like mediaId={media.id} forceRed={forceRed} />
+        <Like mediaId={media.id} forceRed={forceRed}  isLiked={isLiked}/>
         <div className="w-full aspect-[3/4] overflow-hidden relative">
           <Image
             src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w500${media.poster_path}`}

@@ -9,7 +9,6 @@ type LikeProps = {
   mediaId: string;
   isLiked: boolean;  
   forceRed?: boolean;
-  locale: string
 };
 
 export default function Like({ mediaId, isLiked, forceRed = false }: LikeProps) {
