@@ -12,7 +12,6 @@ export async function POST(request: NextRequest, { params }: { params: { movieId
 
   const { movieId } = params; 
 
-  // Recherche si le film est déjà aimé par l'utilisateur
   const existingLike = await prisma.movieLike.findFirst({
     where: {
       movieId: movieId,
@@ -24,7 +23,6 @@ export async function POST(request: NextRequest, { params }: { params: { movieId
 
   let user;
   if (existingLike) {
-    // Si le film est déjà aimé, le retirer
     await prisma.movieLike.delete({
       where: {
         id: existingLike.id,
@@ -32,7 +30,6 @@ export async function POST(request: NextRequest, { params }: { params: { movieId
     });
     user = { message: "Movie removed from likes" };
   } else {
-    // Sinon, l'ajouter aux favoris
     user = await prisma.user.update({
       where: {
         email: token.email as string, 
