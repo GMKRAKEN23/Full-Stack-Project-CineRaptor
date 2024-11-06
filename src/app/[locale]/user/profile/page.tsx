@@ -25,13 +25,13 @@ interface CustomSession extends Session {
 
 interface ProfilePageParams {
   params: Promise<{
-    locale: "en" | "fr";  // Locale as a promise
+    locale: "en" | "fr"; 
   }>;
   isLiked: boolean;
 }
 
 const ProfilePage = async ({ params }: ProfilePageParams) => {
-  const { locale } = await params; // Resolve params promise
+  const { locale } = await params;
   const i18n = await getDictionary(locale);
   
   const session: CustomSession | null = await getServerSession();
