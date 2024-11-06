@@ -4,7 +4,7 @@ import SearchResults from "../../SearchResults";
 interface GenreIdPageProps {
   params: Promise<{ id: string; locale: "en" | "fr"; }>;  
   searchParams: Promise<Record<string, string | undefined>>; 
-  isLiked: boolean 
+  isLiked: boolean;
 }
 
 export default async function GenreIdPage({
