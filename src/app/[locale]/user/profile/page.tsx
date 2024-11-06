@@ -28,10 +28,9 @@ interface ProfilePageParams {
         locale: "en" | "fr"; 
     };
     isLiked: boolean;
-    onLikeToggle: () => void; 
 }
 
-const ProfilePage = async ({ params, onLikeToggle}: ProfilePageParams) => {
+const ProfilePage = async ({ params}: ProfilePageParams) => {
 
   const i18n = await getDictionary(params.locale);
   const session: CustomSession | null = await getServerSession();
@@ -68,7 +67,6 @@ const ProfilePage = async ({ params, onLikeToggle}: ProfilePageParams) => {
             key={movie.id}
             isLiked={user.movieLikes.some((like) => like.movieId === movie.id)} 
             forceRed={true}
-            onLikeToggle={onLikeToggle}
           />
         ))}
       </div>
