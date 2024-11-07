@@ -47,10 +47,10 @@ export default function SignupForm({locale} : SignupProps) {
         if (result?.ok) {
           router.push("/user/profile");
         } else {
-          console.error("Erreur lors de l'authentification après l'inscription");
+          console.error("Error for authentification after signup");
         }
       } else {
-        console.error("Erreur lors de l'inscription");
+        console.error("Error for signup");
       }
     };
 

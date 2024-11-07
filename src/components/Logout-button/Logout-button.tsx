@@ -20,7 +20,7 @@ export default function LogoutButton({locale}: MovieSearchProps){
                 const dictionary = await getDictionary(locale);
                 setI18n(dictionary);
             } catch (error) {
-                console.error("Erreur for loading dictionnaries:", error);
+                console.error("Error for loading dictionnaries:", error);
             }
         }
     

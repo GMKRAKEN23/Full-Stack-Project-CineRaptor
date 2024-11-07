@@ -27,7 +27,7 @@ export default async function MoviesIdPage({ params }: MoviesIdPageProps) {
         <div>
             <MovieDetails movie={movie} locale={locale} />
             <Suspense fallback={<p>Loading ...</p>}>
-                <SimilarMovies movieId={movie.id} locale={locale} isLiked/>
+                <SimilarMovies movieId={movie.id} locale={locale} isLiked={false}/>
             </Suspense>
         </div>
     );

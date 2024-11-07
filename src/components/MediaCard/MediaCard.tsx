@@ -18,7 +18,7 @@ interface Media {
   vote_average: number;
   release_date: string;
 }
-export default function MediaCard({ media, locale, forceRed = false, isLiked }: MediaCardProps) {
+export default function MediaCard({ media, locale, forceRed= false, isLiked }: MediaCardProps) {
 
   return (
     <div className="shadow-lg rounded-lg w-60 md:w-48 z-0 flex flex-col relative">

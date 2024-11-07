@@ -19,7 +19,7 @@ export default function Form({ locale }: FormProps) {
                 const dictionary = await getDictionary(locale);
                 setI18n(dictionary);
             } catch (error) {
-                console.error("Erreur lors du chargement du dictionnaire:", error);
+                console.error("Error for loading dictionaries", error);
             }
         }
 
