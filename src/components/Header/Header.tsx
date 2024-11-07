@@ -24,7 +24,7 @@ export default async function Header({ locale }: PopularProps) {
     <Disclosure as="header" className="bg-white shadow">
       <div className="mx-auto max-w-8xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
         <div className="relative flex h-16 justify-between">
-          <div className="relative z-10 flex px-2 lg:px-0">
+          <div className="relative z-10 flex lg:px-0">
             <div className="flex flex-shrink-0 items-center">
               <Link href={`/${locale}`}>
                 <div className="flex justify-center items-center">
