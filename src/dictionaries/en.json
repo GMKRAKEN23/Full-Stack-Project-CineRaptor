@@ -7,6 +7,10 @@
     "title": "Browse by genres"
   },
 
+  "genreFilter": {
+    "text": "All the"
+  },
+
   "searchBarHeader": {
     "title": "Search for a title"
   },
@@ -19,7 +23,8 @@
     "sort_by": "Sort by",
     "popularity": "Popularity",
     "rating": "Rating",
-    "number_of_ratings": "Number of ratings"
+    "number_of_ratings": "Number of ratings",
+    "search": "Search"
   },
 
   "header": {

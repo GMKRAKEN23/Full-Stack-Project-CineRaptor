@@ -77,8 +77,6 @@ export default function SignupForm({locale} : SignupProps) {
   return (
     <>
     <div className="min-h-screen bg-white sm:bg-neutral-200">
-
-
       <div className="flex sm:h-full flex-1 sm:shadow-md shadow-sky-100 flex-col justify-center px-6 py-12 lg:px-8 sm:mt-10 sm:mx-auto sm:w-full sm:max-w-[480px] bg-white rounded-md">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center">
           <Link href={`/${locale}`}>

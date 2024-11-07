@@ -28,6 +28,7 @@ export default async function SearchResults({ searchParams, genreId, locale, isL
         { key: "release_date.gte", value: searchParams["release_date.gte"] || "" },
         { key: "release_date.lte", value: searchParams["release_date.lte"] || "" },
         { key: "with_genres", value: genreId || "" },
+        { key: "language", value: locale },
     ]);
 
     return (
@@ -39,7 +40,7 @@ export default async function SearchResults({ searchParams, genreId, locale, isL
                         key={movie.id} 
                         className="flex justify-center"
                     > 
-                    <MediaCard media={movie} locale={locale} isLiked={isLiked}/>
+                    <MediaCard media={movie} locale={locale as "en" | "fr"} isLiked={isLiked}/>
                     </div>
                 ))}
         </div>

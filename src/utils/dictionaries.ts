@@ -9,6 +9,7 @@ interface SimpleEntry {
     passwordLabel: string;
     passwordPlaceholder: string;
     password: string;
+    text: string;
 }
 
 interface FormEntry {
@@ -20,6 +21,7 @@ interface FormEntry {
     popularity: string;
     rating: string;
     number_of_ratings: string;
+    search: string;
 }
 
 export default interface Dictionary {
@@ -32,6 +34,7 @@ export default interface Dictionary {
     profilPage: SimpleEntry;
     signup: SimpleEntry;
     login: SimpleEntry;
+    genreFilter: SimpleEntry;
 }
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {

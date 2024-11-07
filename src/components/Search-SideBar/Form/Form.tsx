@@ -65,7 +65,7 @@ export default function Form({ locale }: FormProps) {
                     <option value="cote_count.desc">{i18n.form.number_of_ratings}</option>
                 </select>
             </div>
-            <input type="submit" value="Rechercher" className="cursor-pointer tracking-wider p-1.5 w-full bg-gray-100 hover:bg-sky-600 hover:text-white transition duration-200 ease-in-out mt-2" />
+            <input type="submit" value={i18n.form.search} className="cursor-pointer tracking-wider p-1.5 w-full bg-gray-100 hover:bg-sky-600 hover:text-white transition duration-200 ease-in-out mt-2" />
         </form>
     );
 }

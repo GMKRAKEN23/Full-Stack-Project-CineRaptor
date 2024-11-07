@@ -4,6 +4,7 @@ import { roboto, montserrat } from "@/app/fonts/fonts";
 import "./globals.css";
 import { availableLocales } from "@/utils/i18n";
 import AuthProvider from "@/components/Auth-provider/AuthProvider";
+import Footer from "@/components/Footer/Footer";
 
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default async function RootLayout({
         <AuthProvider>
           <main>{children}</main>
         </AuthProvider>
+        <Footer/>
       </body>
     </html>
   );

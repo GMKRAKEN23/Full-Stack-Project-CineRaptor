@@ -19,7 +19,7 @@ export default async function MoviesPage({
   return (
     <SearchResults
       searchParams={resolvedSearchParams}
-      locale={locale}
+      locale={locale as "en" | "fr"}
       genreId={genreId}
       isLiked={isLiked}
     />

@@ -16,7 +16,7 @@ export default async function MovieSearchLayout({
 
     return (
         <div className="flex ml-8 mt-8 flex-col lg:flex-row">
-            <SearchSideBar genres={genres} locale={locale} />
+            <SearchSideBar genres={genres} locale={locale as "en" | "fr"} />
             <div className="flex my-4 flex-wrap">{children}</div>
         </div>
     );
