@@ -33,7 +33,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="256x256" />
       </head>
       <body className={`${roboto.variable} ${montserrat.variable} antialiased bg-neutral-200`}>
-        <Header locale={locale} />
+        <Header locale={locale as "en" | "fr"} />
         <AuthProvider>
           <main>{children}</main>
         </AuthProvider>

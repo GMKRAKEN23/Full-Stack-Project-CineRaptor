@@ -20,7 +20,7 @@ interface MovieDetailsProps {
 export default function MovieDetails({ movie, locale }: MovieDetailsProps){
   return (
     <div className="relative w-full min-h-[60vh]">
-      <div className="absolute inset-0 z-10">
+      <div className="absolute inset-0">
         <Image
           src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/original${movie.backdrop_path}`}
           alt={movie.title}
@@ -30,7 +30,7 @@ export default function MovieDetails({ movie, locale }: MovieDetailsProps){
         <div className="absolute inset-0 bg-[#041226] bg-opacity-75"></div>
       </div>
 
-      <div className="relative z-20 flex justify-center gap-12 py-12">
+      <div className="relative flex justify-center gap-12 py-12">
         <Image
           src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_PATH}/w342${movie.poster_path}`}
           width={250}

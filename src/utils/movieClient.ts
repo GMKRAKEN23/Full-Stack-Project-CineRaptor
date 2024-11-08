@@ -9,6 +9,7 @@ export const getMovieByPath = (path : string, params: Array<{key: string; value:
   .forEach((param) => {
     if (typeof param.value === 'string') {
         url.searchParams.append(param.key, param.value);
+        
     }
 });
   return fetch(url).then((res) => res.json());

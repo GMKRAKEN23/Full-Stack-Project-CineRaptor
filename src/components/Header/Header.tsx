@@ -47,7 +47,7 @@ export default async function Header({ locale }: PopularProps) {
                 Search
               </label>
               <div className="relative">
-                <MovieSearch locale={locale} />
+                <MovieSearch locale={locale as "en" | "fr"} />
               </div>
             </div>
           </div>

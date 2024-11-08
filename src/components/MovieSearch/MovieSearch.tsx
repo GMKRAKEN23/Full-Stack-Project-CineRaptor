@@ -22,13 +22,20 @@ export default function MovieSearch({ locale}: MovieSearchProps) {
 
   const updateMovieSearch = async (query: string) => {
     if (query.trim() === "") {
-      setMovieResults([]); 
+      setMovieResults([]);
       return;
     }
-    const response = await fetch(`/api/movies/search?query=${query}`);
+  
+    const languageParam = locale === "en" ? "en-US" : "fr-FR"; 
+    console.log("Calling API with language: ", languageParam);  
+  
+    const response = await fetch(`/api/movies/search?query=${query}&language=${languageParam}`);
     const { results } = await response.json();
+    console.log("API Response:", results);
+  
     setMovieResults(results.filter((movie: Movie) => movie.backdrop_path));
-  };
+  }
+  
 
   useEffect(() => {
     async function loadDictionary() {
@@ -65,11 +72,10 @@ export default function MovieSearch({ locale}: MovieSearchProps) {
       {isFocused && movieResults.length > 0 && (
         <MovieSearchResults
           movieResults={movieResults}
-          locale={locale}
+          locale={locale as "en" | "fr"}
           onResultClick={() => setIsFocused(false)} 
         />
       )}
     </div>
   );
 }
-
